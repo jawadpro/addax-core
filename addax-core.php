@@ -50,12 +50,96 @@ class addax_core {
 
 		add_action( 'init', array ( $this, 'addax_core_register_post_types' ) );
 		add_action( 'init', array ( $this, 'addax_core_register_taxonomies' ) );
+		add_filter( 'manage_edit-adx-slider-category_columns' , array ( $this, 'addax_slider_custom_column_header' ), 10);
+		add_action( 'manage_adx-slider-category_custom_column' , array ( $this, 'addax_slider_column_content' ) , 10, 3);
+		add_filter( 'manage_edit-addax-slider_columns' , array ( $this, 'addax_image_thumbnail_custom_cl' ) );
+		add_action( 'manage_addax-slider_posts_custom_column' , array ( $this, 'addax_im_thumb_custom_cl_value' ) , 10, 2);
+	}
 
+		/* ================ ADDING CUSTOM COLUMN FOR ADDAX SLIDER POST TYPE  ============== */
+
+		function addax_image_thumbnail_custom_cl( $columns ) {
+			$new = array();
+			foreach($columns as $key => $title) {
+				if ($key =='date')
+					$new['thumbnail'] = __( 'Slide Image' );
+				$new[$key] = $title;
+			}
+			return $new;
+		}
+
+		// Assigning Value to column
+
+		function addax_im_thumb_custom_cl_value( $column, $post_id ) {
+				global $post;
+		    if( $column == 'thumbnail')
+				{
+					$img_id = get_post_meta( $post->ID , 'slide_image' , true );
+					$img_src = wp_get_attachment_image_src($img_id);
+					echo '<img src="'.$img_src[0].'">';
+				}
+		}
+
+	/* ================ ADDING CUSTOM COLUMN FOR ADDAX SLIDER CATEGORY TABLE  ============== */
+
+		function addax_slider_custom_column_header( $columns ){
+			unset($columns['description']);
+			$new = array();
+			foreach($columns as $key => $title) {
+			  if ($key=='slug')
+			    $new['shortcode'] = __( 'Shortcode' );
+			  $new[$key] = $title;
+			}
+			return $new;
+	}
+
+ // Assigning Value to column
+	function addax_slider_column_content( $value, $column, $tax_id ){
+		if ($column === 'shortcode') {
+			$category = get_category($tax_id);
+			echo '[addax-slider slider="'. $category->slug .'" ]';
+		}
 	}
 
 	/* ================ REGISTER PROJECT, TEAM, TESTIMONIAL AND SERVICE POST TYPES ============== */
 
 	function addax_core_register_post_types() {
+
+		$labels = array(
+		  'name'               => _x( 'Slides', 'post type general name', 'addax_core' ),
+		  'singular_name'      => _x( 'Slide', 'post type singular name', 'addax_core' ),
+		  'menu_name'          => _x( 'Addax Slider', 'admin menu', 'addax_core' ),
+		  'name_admin_bar'     => _x( 'Addax Slide', 'add new on admin bar', 'addax_core' ),
+		  'add_new'            => _x( 'Add New Slide', 'slide', 'addax_core' ),
+		  'add_new_item'       => __( 'Add New Slide', 'addax_core' ),
+		  'new_item'           => __( 'New Slide', 'addax_core' ),
+		  'edit_item'          => __( 'Edit Slide', 'addax_core' ),
+		  'view_item'          => __( 'View Slide', 'addax_core' ),
+		  'all_items'          => __( 'All Slides', 'addax_core' ),
+		  'search_items'       => __( 'Search Slides', 'addax_core' ),
+		  'parent_item_colon'  => __( 'Parent Slides:', 'addax_core' ),
+		  'not_found'          => __( 'No Slides found.', 'addax_core' ),
+		  'not_found_in_trash' => __( 'No Slides found in Trash.', 'addax_core' )
+		);
+
+		$args = array(
+		  'labels'             => $labels,
+		  'description'        => __( 'Description.', 'addax_core' ),
+		  'public'             => false,
+		  'publicly_queryable' => false,
+		  'show_ui'            => true,
+		  'show_in_menu'       => true,
+			'menu_icon'          => get_template_directory_uri() . '/assets/img/adx-fav.png',
+		  'query_var'          => true,
+		  'rewrite'            => array( 'slug' => 'addax_slider' ),
+		  'capability_type'    => 'post',
+		  'has_archive'        => true,
+		  'hierarchical'       => false,
+		  'menu_position'      => null,
+		  'supports'           => array( 'title' )
+		);
+
+		register_post_type( 'addax-slider', $args );
 
 		$labels = array(
 			'name'               => _x( 'Projects', 'post type general name', 'addax_core' ),
@@ -166,22 +250,22 @@ class addax_core {
 function addax_core_register_taxonomies() {
 		//CATEGORIES TAXONOMY REGISTER
 		$labels = array(
-			'name'                       => _x( 'Categories', 'taxonomy general name' ),
-			'singular_name'              => _x( 'Category', 'taxonomy singular name' ),
-			'search_items'               => __( 'Search Categories' , 'addax_core' ),
-			'popular_items'              => __( 'Popular Categories' , 'addax_core' ),
-			'all_items'                  => __( 'All Categories' , 'addax_core' ),
+			'name'                       => _x( 'Slider', 'taxonomy general name' , 'addax_core' ),
+			'singular_name'              => _x( 'Slider', 'taxonomy singular name' , 'addax_core' ),
+			'search_items'               => __( 'Search Sliders' , 'addax_core' ),
+			'popular_items'              => __( 'Popular Sliders' , 'addax_core' ),
+			'all_items'                  => __( 'All Sliders' , 'addax_core' ),
 			'parent_item'                => null,
 			'parent_item_colon'          => null,
-			'edit_item'                  => __( 'Edit Category' , 'addax_core' ),
-			'update_item'                => __( 'Update Category' , 'addax_core' ),
-			'add_new_item'               => __( 'Add New Category' , 'addax_core' ),
-			'new_item_name'              => __( 'New Category Name' , 'addax_core' ),
+			'edit_item'                  => __( 'Edit Slider' , 'addax_core' ),
+			'update_item'                => __( 'Update Slider' , 'addax_core' ),
+			'add_new_item'               => __( 'Add New Slider' , 'addax_core' ),
+			'new_item_name'              => __( 'New Slider Name' , 'addax_core' ),
 			'separate_items_with_commas' => __( 'Separate categories with commas' , 'addax_core' ),
 			'add_or_remove_items'        => __( 'Add or remove categories' , 'addax_core' ),
 			'choose_from_most_used'      => __( 'Choose from the most used categories' , 'addax_core' ),
 			'not_found'                  => __( 'No categories found.' , 'addax_core' ),
-			'menu_name'                  => __( 'Categories' , 'addax_core' ),
+			'menu_name'                  => __( 'Sliders' , 'addax_core' ),
 		);
 
 		$args = array(
@@ -191,13 +275,12 @@ function addax_core_register_taxonomies() {
 			'show_admin_column'     => true,
 			'update_count_callback' => '_update_post_term_count',
 			'query_var'             => true,
-			'rewrite'               => array( 'slug' => 'project-categories' ),
+			'rewrite'               => array( 'slug' => 'adx-slider' ),
 		);
 
-		register_taxonomy( 'project-category', 'project', $args );
+		register_taxonomy( 'adx-slider-category', 'addax-slider', $args );
 
 	}
-
 
 }
 
@@ -219,6 +302,21 @@ addax_core();
 
 endif; // class_exists check
 
-/* ======== INCLUDING SHORTCODES ========= */
-//require_once dirname( __FILE__ ) . '/Addax-shortcodes.php';
+	/* ================ ADDAX REDUX INTEGRATION ============== */
+
+	if ( class_exists( 'ReduxFrameworkPlugin' ) && file_exists( WP_PLUGIN_DIR .'/addax-core/lib/redux-extensions/addax-config.php' ) ) {
+	 if( class_exists('addax_core') ){
+		 require_once( WP_PLUGIN_DIR .'/addax-core/lib/redux-extensions/addax-config.php' );
+	 }
+	}
+
+	/* ======== ADDAX METABOX INTEGRATION ========= */
+	require_once WP_PLUGIN_DIR . '/addax-core/lib/meta-box/meta-box.php';
+
+	/* ======== ADDAX SHORTCODES ========= */
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-slider-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-heading-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-clients-shortcode.php';
+
+
 ?>

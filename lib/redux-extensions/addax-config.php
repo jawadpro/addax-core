@@ -143,7 +143,7 @@
 	Redux::setSection( $opt_name, array(
         'title'      => __( 'General', 'addax' ),
         'id'         => 'general-settings',
-		'icon'       => 'fa fa-cog',
+		'icon'       => 'el el-home',
 		'fields'	 => array(
 
 
@@ -214,6 +214,8 @@
             'type'     => 'switch',
             'title'    => __('Transparent Header', 'addax' ),
             'subtitle'     => __('This will make header background transparent', 'addax'),
+            'on' => __('Enable', 'addax'),
+            'off' => __('Disable', 'addax'),
             'default'  => '0'
           ),
 
@@ -222,6 +224,8 @@
             'type'     => 'switch',
             'title'    => __('Header Search', 'addax' ),
             'subtitle'     => __('Enable/Disable header search.', 'addax'),
+            'on' => __('Enable', 'addax'),
+            'off' => __('Disable', 'addax'),
             'default'  => '0'
           ),
 
@@ -230,6 +234,8 @@
             'type'     => 'switch',
             'title'    => __('Header Topbar', 'addax' ),
             'subtitle'     => __('Enable/Disable Topbar', 'addax'),
+            'on' => __('Enable', 'addax'),
+            'off' => __('Disable', 'addax'),
             'default'  => '0'
           ),
 
@@ -266,6 +272,8 @@
                   'id'       => 'topbar-social',
                   'type'     => 'switch',
                   'title'    => __('Topbar Social Icons', 'addax' ),
+                  'on' => __('Enable', 'addax'),
+                  'off' => __('Disable', 'addax'),
                   'default' => false,
                   'required' => array(
           								array('addax-topbar','equals', true)
@@ -318,114 +326,60 @@
 
 	/* ================ FOOTER SECTION ============== */
 
+  Redux::setSection( $opt_name, array(
+    'title' => esc_html__( 'Footer Options', 'addax' ),
+    'id'    => 'footer-options',
+    'desc'  => '',
+    'icon'  => 'fa fa-level-down'
+    )
+  );
+
 	Redux::setSection( $opt_name, array(
-        'title'      => esc_html__( 'Footer', 'addax' ),
-        'id'         => 'footer-settings',
-		'icon'       => 'fa fa-level-down',
-		'fields'	 => array(
+        'title'      => esc_html__( 'Footer Layouts', 'addax' ),
+        'id'         => 'footer-layout',
+        'subsection' => true,
+    		'icon'       => 'fa fa-level-down',
+    		'fields'	 => array(
 
+                array(
+                  'id'       => 'footer-widget-sec',
+                  'type'     => 'switch',
+                  'title'    => __('Footer Widgets Section', 'addax' ),
+                  'subtitle'     => __('Enable/Disable footer widgets section.', 'addax'),
+                  'on' => __('Enable', 'addax'),
+                  'off' => __('Disable', 'addax'),
+                  'default'  => '1'
+                ),
 
-				array(
-					'id'       => 'footer-style',
-					'type'     => 'switch',
-					'title'    => esc_html__('Footer Style', 'addax'),
-					'default'  => true,
-					'on'	   => 'Dark',
-					'off'	   => 'Light'
-				),
-				array(
-					'id'        => 'footer-font-color',
-					'type'      => 'color',
-					'title'     => esc_html__('Footer Font Color', 'addax'),
-					"default"   => '#ffffff',
-					"validate"   => 'color',
-					"transparent"   => false,
+        				array(
+        					'id'       => 'footer-widgets-layout',
+        					'type'     => 'image_select',
+        					'title'    => esc_html__('Footer Widget Columns', 'addax' ),
+        					'options'  => array(
+        						2 => array(
+        							'alt'   => 'Footer 2 columns',
+        							'img'   => get_template_directory_uri ().'/assets/img/adx-fav.png'
+        						),
+        						3  => array(
+        							'alt'   => 'Footer 3 columns',
+        							'img'   => get_template_directory_uri ().'/assets/img/adx-fav.png'
+        						),
+                    4  => array(
+        							'alt'   => 'Footer 4 columns',
+        							'img'   => get_template_directory_uri ().'/assets/img/adx-fav.png'
+        						),
+        					),
+        					'default' => 2,
+                  'required' => array(
+          								array('footer-widget-sec','equals', true)
+          							),
 
-				),
-
-				array(
-				'id'       => 'footer-copyright',
-				'type'     => 'text',
-				'title'    => esc_html__('Copyright Text', 'addax'),
-				"default"   => esc_html__('Copyrights 2016','addax'),
-				),
-				array(
-					'id'        => 'footer-powered-by',
-					'type'     => 'text',
-					'title'    => esc_html__('Powered by Text', 'addax'),
-					'default'  => 'Design by: <a href="#.">Brighthemes',
-
-				),
-
-				array(
-					'id'       => 'footer-widgets',
-					'type'     => 'switch',
-					'title'    => esc_html__('Use Widgets for Footer', 'addax'),
-          'subtitle' => esc_html__('If you select to use widgets for footer, you will have to add your widgets inside Footer widget area 1,2 and 3 in Appearance >> Widgets section of dashboard. ','addax'),
-					'default'  => false,
-					'on'	   => 'Yes',
-					'off'	   => 'No'
-				),
-				array(
-				'id'       => 'footer-phone',
-				'type'     => 'text',
-				'title'    => esc_html__('Phone Number', 'addax'),
-				"default"   => '+1 000 22 999',
-				'required' => array(
-								array('footer-widgets','equals',false)
-							)
-				),
-				array(
-				'id'       => 'footer-email',
-				'type'     => 'text',
-				'title'    => esc_html__('Email Address', 'addax'),
-				"default"   => 'info@yourcompany.com',
-				'required' => array(
-								array('footer-widgets','equals',false)
-							)
-				),
-				array(
-				'id'       => 'footer-address',
-				'type'     => 'text',
-				'title'    => esc_html__('Address', 'addax'),
-				"default"   => 'New York, CA 12012',
-				'required' => array(
-								array('footer-widgets','equals',false)
-							)
-				),
-				array(
-					'id'        => 'footer_facebook_url',
-					'type'     => 'text',
-					'title'    => esc_html__('Facebook URL', 'addax'),
-					'default'  => "#",
-					'required' => array(
-								array('footer-widgets','equals',false)
-							)
-
-				),
-				array(
-					'id'        => 'footer_twitter_url',
-					'type'     => 'text',
-					'title'    => esc_html__('Twitter URL', 'addax'),
-					'default'  => "#",
-					'required' => array(
-								array('footer-widgets','equals',false)
-							)
-
-				),
-				array(
-					'id'        => 'footer_google_url',
-					'type'     => 'text',
-					'title'    => esc_html__('Google URL', 'addax'),
-					'default'  => "#",
-					'required' => array(
-								array('footer-widgets','equals',false)
-							)
+        				),
 
 				),
 
 		)
-	));
+	);
 
 	/* ================ CUSTOM STYLES SECTION ============== */
 
