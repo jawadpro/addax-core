@@ -241,7 +241,7 @@ class addax_core {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+			'supports'           => array( 'title' )
 		);
 
 		register_post_type( 'adx-testimonial', $args );
@@ -317,6 +317,9 @@ endif; // class_exists check
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-slider-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-heading-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-clients-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-infobox-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-testimonials-shortcode.php';
+
 
 
 ?>

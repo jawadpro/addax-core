@@ -9,12 +9,22 @@
 
 				'heading'  => '',
         'sub_heading' => '',
-        'halign' => 'alignCenter'
+        'halign' => 'alignCenter',
+        'heading_color'=> '#555',
+        'sub_heading_color' => '#555',
 
 			), $atts ) );
 
     if( !empty( $halign ) ){
       $halign = $halign;
+    }
+
+    if( !empty( $heading_color ) ){
+      $heading_color = $heading_color;
+    }
+
+    if( !empty( $sub_heading_color ) ){
+      $sub_heading_color = $sub_heading_color;
     }
 
     ob_start();
@@ -25,7 +35,7 @@
 
           <?php if( !empty( $heading ) ){ ?>
 
-          <h1 class="addax_heading <?php echo $halign;  ?> wow fadeInUp" style="color:#fff; font-weight:300; font-size:2.5em;">
+          <h1 class="addax_heading <?php echo $halign;  ?> wow fadeInUp" style="color:<?php echo $heading_color; ?>; font-weight:300; font-size:2.5em;">
 
             <?php _e( $heading , 'addax'); ?>
 
@@ -35,7 +45,7 @@
 
          <?php if( !empty( $sub_heading ) ){ ?>
 
-        <h3 class="addax-subheading <?php echo $halign;  ?> wow fadeInUp" data-wow-delay=".2s" style="color:#fff; font-size:18px;margin-bottom:30px">
+        <h3 class="addax-subheading <?php echo $halign;  ?> wow fadeInUp" data-wow-delay=".2s" style="color:<?php echo $sub_heading_color;  ?>; font-size:18px;margin-bottom:30px">
 
           <?php _e( $sub_heading , 'addax'); ?>
 
@@ -93,6 +103,22 @@ function addax_vc_map_heading()
 									esc_html__( 'Left', 'addax' )  		=> 'alignLeft',
 						   )
 					),
+
+          array(
+            "type" => "colorpicker",
+            "heading" => __( "Heading Color", "addax" ),
+            "param_name" => "heading_color",
+            "value" => '#555', //Default Red color
+            "description" => __( "Choose Heading color", "addax" )
+         ),
+
+         array(
+           "type" => "colorpicker",
+           "heading" => __( "Sub Heading Color", "addax" ),
+           "param_name" => "sub_heading_color",
+           "value" => '#555', //Default Red color
+           "description" => __( "Choose sub heading color", "addax" )
+        )
 			)
 
 	) );

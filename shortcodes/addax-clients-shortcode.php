@@ -88,7 +88,7 @@ function addax_vc_map_clients()
 
 	vc_map( array(
 
-      'name'										=> esc_html__( 'Addax Heading', 'addax' ),
+      'name'										=> esc_html__( 'Client Logo', 'addax' ),
       'base' 				      		  => 'addax_client_image',
       'icon'                    => get_template_directory_uri().'/assets/img/adx-fav.png',
       'as_child' 								=> array('only' => 'addax_clients'),

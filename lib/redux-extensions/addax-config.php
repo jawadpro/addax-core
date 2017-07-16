@@ -186,7 +186,7 @@
 
 
     Redux::setSection( $opt_name, array(
-          'title'      => esc_html__( 'Header Layouts', 'addax' ),
+          'title'      => esc_html__( 'Header Layout', 'addax' ),
           'id'         => 'header-layout-section',
           'subsection' => true,
       		'icon'       => 'fa fa-bars',
@@ -312,12 +312,28 @@
     				),
 
             array(
+    					'id'        => 'topbar-link-color',
+    					'type'      => 'color',
+    					'title'     => esc_html__('Topbar Links color', 'addax'),
+    					"validate"   => 'color',
+    					"transparent"   => false,
+
+    				),
+
+            array(
     					'id'        => 'header-background-color',
     					'type'      => 'color',
     					'title'     => esc_html__('Header Background Color', 'addax'),
     					"validate"   => 'color',
     					"transparent"   => false,
+    				),
 
+            array(
+    					'id'        => 'header-menu-color',
+    					'type'      => 'color',
+    					'title'     => esc_html__('Header Menu Link Color', 'addax'),
+    					"validate"   => 'color',
+    					"transparent"   => false,
     				),
 
   		)
@@ -335,7 +351,7 @@
   );
 
 	Redux::setSection( $opt_name, array(
-        'title'      => esc_html__( 'Footer Layouts', 'addax' ),
+        'title'      => esc_html__( 'Footer Layout', 'addax' ),
         'id'         => 'footer-layout',
         'subsection' => true,
     		'icon'       => 'fa fa-level-down',
@@ -348,7 +364,6 @@
                   'subtitle'     => __('Enable/Disable footer widgets section.', 'addax'),
                   'on' => __('Enable', 'addax'),
                   'off' => __('Disable', 'addax'),
-                  'default'  => '1'
                 ),
 
         				array(
@@ -358,15 +373,15 @@
         					'options'  => array(
         						2 => array(
         							'alt'   => 'Footer 2 columns',
-        							'img'   => get_template_directory_uri ().'/assets/img/adx-fav.png'
+        							'img'   => get_template_directory_uri ().'/assets/img/footer-latout1.png'
         						),
         						3  => array(
         							'alt'   => 'Footer 3 columns',
-        							'img'   => get_template_directory_uri ().'/assets/img/adx-fav.png'
+        							'img'   => get_template_directory_uri ().'/assets/img/footer-latout2.png'
         						),
                     4  => array(
         							'alt'   => 'Footer 4 columns',
-        							'img'   => get_template_directory_uri ().'/assets/img/adx-fav.png'
+        							'img'   => get_template_directory_uri ().'/assets/img/footer-latout3.png'
         						),
         					),
         					'default' => 2,
@@ -375,6 +390,60 @@
           							),
 
         				),
+
+                array(
+                  'id'       => 'footer-social-sec',
+                  'type'     => 'switch',
+                  'title'    => __('Footer Social Icons', 'addax' ),
+                  'subtitle'     => __('Enable/Disable footer social icons.', 'addax'),
+                  'on' => __('Enable', 'addax'),
+                  'off' => __('Disable', 'addax'),
+                ),
+
+                array(
+                  'id'       => 'footer-copyright-text',
+                  'type'     => 'textarea',
+                  'title'    => __('Footer Copyright', 'addax' ),
+                  'default'  => 'Addax , 2017 All Rights Reserved',
+          				),
+
+				),
+
+		)
+	);
+
+  Redux::setSection( $opt_name, array(
+        'title'      => esc_html__( 'Footer Styling', 'addax' ),
+        'id'         => 'footer-styling',
+        'subsection' => true,
+    		'icon'       => 'fa fa-level-down',
+    		'fields'	 => array(
+
+          array(
+            'id'        => 'footer-background',
+            'type'      => 'color',
+            'title'     => esc_html__('Footer Background Color', 'addax'),
+            "validate"   => 'color',
+            "transparent"   => false,
+
+          ),
+
+          array(
+            'id'        => 'footer-text-color',
+            'type'      => 'color',
+            'title'     => esc_html__('Footer Text Color', 'addax'),
+            "validate"   => 'color',
+            "transparent"   => false,
+          ),
+
+          array(
+            'id'        => 'footer-links-color',
+            'type'      => 'color',
+            'title'     => esc_html__('Footer Links Color', 'addax'),
+            "validate"   => 'color',
+            "transparent"   => false,
+          ),
+
 
 				),
 
