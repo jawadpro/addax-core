@@ -196,8 +196,8 @@ class addax_core {
 		$args = array(
 			'labels'             => $labels,
 			'description'        => __( 'Description.', 'addax_core' ),
-			'public'             => true,
-			'publicly_queryable' => true,
+			'public'             => false,
+			'publicly_queryable' => false,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
@@ -206,7 +206,7 @@ class addax_core {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+			'supports'           => array( 'title' )
 		);
 
 		register_post_type( 'adx-team', $args );
@@ -231,8 +231,8 @@ class addax_core {
 		$args = array(
 			'labels'             => $labels,
 			'description'        => __( 'Description.', 'addax_core' ),
-			'public'             => true,
-			'publicly_queryable' => true,
+			'public'             => false,
+			'publicly_queryable' => false,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
@@ -312,6 +312,7 @@ endif; // class_exists check
 
 	/* ======== ADDAX METABOX INTEGRATION ========= */
 	require_once WP_PLUGIN_DIR . '/addax-core/lib/meta-box/meta-box.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/lib/meta-box/meta-box-conditional-logic/meta-box-conditional-logic.php';
 
 	/* ======== ADDAX SHORTCODES ========= */
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-slider-shortcode.php';
@@ -319,6 +320,8 @@ endif; // class_exists check
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-clients-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-infobox-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-testimonials-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-team-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-accordion-shortcode.php';
 
 
 

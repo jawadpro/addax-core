@@ -7,7 +7,7 @@
 
       extract( shortcode_atts( array(
 
-				'slider'  => ''
+				'slider'  => '',
 
 			), $atts ) );
 
@@ -41,7 +41,6 @@
         $slide_img_url = wp_get_attachment_image_src( $slide_img_id , 'full' );
         $slide_sub_heading = get_post_meta( $post->ID , 'slide_sub_heading' , true );
         $slide_bg_overlay = get_post_meta( $post->ID , 'slide_bg_overlay' , true );
-        $background_parallex = get_post_meta( $post->ID , 'background_parallex' , true );
         $button_one_text = get_post_meta( $post->ID , 'button_one_text' , true );
         $button_one_link = get_post_meta( $post->ID , 'button_one_link' , true );
         $button_two_text = get_post_meta( $post->ID , 'button_two_text' , true );
@@ -51,35 +50,47 @@
         $sub_heading_text_size = get_post_meta( $post->ID , 'sub_heading_text_size' , true );
         $main_heading_text_color = get_post_meta( $post->ID , 'main_heading_text_color' , true );
         $sub_heading_text_color = get_post_meta( $post->ID , 'sub_heading_text_color' , true );
+        $btn_form_option = get_post_meta( $post->ID , 'btn_form_option' , true );
 
         if( $slide_img_url == false ) { $slide_img_url = ''; }
         if( $slide_bg_overlay == 'yes' ) { $slide_bg_overlay = 'slide-overlay'; }
-        if( $background_parallex == 'yes' ) { $background_parallex = 'parallax'; }
         if( $content_position == 'center' ) { $content_position = 'alignCenter'; }
         if( $content_position == 'left' ) { $content_position = 'half left alignRight'; }
         if( $content_position == 'right' ) { $content_position = 'half right'; }
         if( empty( $main_heading_text_color ) ) { $main_heading_text_color = '#fff'; }
         if( empty( $sub_heading_text_color ) ) { $sub_heading_text_color = '#fff'; }
-
+        if( !empty( $main_heading_text_size ) ) { $main_heading_text_size = 'font-size:'.$main_heading_text_size.'px !important;'; }
+        if( !empty( $sub_heading_text_size ) ) { $sub_heading_text_size = 'font-size:'.$main_heading_text_size.'px !important;'; }
         ?>
 
-             <div class="ah-content <?php echo $slide_bg_overlay .' '. $background_parallex; ?>" style="background-image:url('<?php echo $slide_img_url[0]; ?>')">
+             <div class="ah-content <?php echo $slide_bg_overlay; ?>" style="background-image:url('<?php echo $slide_img_url[0]; ?>')">
                 <div class="ah-holder <?php echo $content_position; ?>">
-                  <h1 style="color:<?php echo $main_heading_text_color; ?> !important;"><?php __( the_title() , 'addax' ); ?></h1>
+                  <h1 style="<?php echo $main_heading_text_size; ?>color:<?php echo $main_heading_text_color; ?> !important;"><?php __( the_title() , 'addax' ); ?></h1>
 
                   <?php if( !empty( $slide_sub_heading )  ) {  ?>
-                  <h3 style="color:<?php echo $sub_heading_text_color; ?> !important;"><?php echo esc_html_e( $slide_sub_heading , 'addax' ); ?></h3>
+                  <h3 style="<?php echo $sub_heading_text_size; ?>color:<?php echo $sub_heading_text_color; ?> !important;"><?php echo esc_html_e( $slide_sub_heading , 'addax' ); ?></h3>
                   <?php } ?>
 
-                  <?php if( !empty( $button_one_text )  ) {  ?>
+
+
+                  <?php
+                  if( !empty( $btn_form_option ) && $btn_form_option == 'button' ) {
+                   if( !empty( $button_one_text )  ) {  ?>
                    <a href="<?php echo esc_html( $button_one_link ); ?>" class="btn btn-primary btn-round"><?php echo esc_html_e( $button_one_text , 'addax' ); ?></a>
                   <?php } ?>
 
                   <?php if( !empty( $button_two_text )  ) {  ?>
                    <a href="<?php echo esc_html( $button_two_link ); ?>" class="btn light-btn btn-round btn-right"><?php echo esc_html_e( $button_two_text , 'addax' ); ?></a>
-                  <?php } ?>
+                  <?php }  }?>
 
-
+                  <?php if( !empty( $btn_form_option ) && $btn_form_option == 'form' ) { ?>
+                  <p style="color:#0076ff;"><i>Lorem ipsum dolor sit amet</i> </p>
+                  <form class="subscription-form">
+                      <input type="text" class="subscription-name" placeholder="Your Full Name">
+                      <input type="text" class="subscription-email" placeholder="Your Email Address">
+                      <input type="submit" class="subscription-btn" value="Get Updates">
+                  </form>
+                  <?php  } ?>
 
                 </div>
             </div>

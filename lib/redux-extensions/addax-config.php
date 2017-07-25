@@ -146,6 +146,13 @@
 		'icon'       => 'el el-home',
 		'fields'	 => array(
 
+      array(
+        'id'       => 'mailchimp-api',
+        'type'     => 'text',
+        'title'    => __('Mailchimp Api', 'addax' ),
+        'default'  => '',
+        'subtitle'     => __('Enter you mailchimp api to make your subscription form working.', 'addax'),
+        ),
 
 		)
 	));
