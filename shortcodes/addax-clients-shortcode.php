@@ -4,19 +4,7 @@
   if ( ! function_exists( 'addax_clients_html_callback' ) ) {
 
     function addax_clients_html_callback( $atts , $content = NULL ) {
-
-      extract( shortcode_atts( array(
-
-				'heading'  => '',
-        'sub_heading' => '',
-        'halign' => 'alignCenter'
-
-			), $atts ) );
-
-    if( !empty( $halign ) ){
-      $halign = $halign;
-    }
-
+      
     ob_start();
     ?>
 

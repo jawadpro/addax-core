@@ -457,6 +457,27 @@
 		)
 	);
 
+  /* ================ BLOG SECTION ============== */
+
+  Redux::setSection( $opt_name, array(
+    'title' => esc_html__( 'Blog Options', 'addax' ),
+    'id'    => 'blog-options',
+    'desc'  => '',
+    'icon'  => 'el el-level-down',
+    'fields'	 => array(
+      array(
+        'id'       => 'blog-style-option',
+        'type'     => 'select',
+        'title'    => __('Blog Stlye', 'addax'),
+        'options'  => array(
+            'addax-blog-full' => 'Single Article',
+            'addax-masonry' => 'Masonry',
+        ),
+        'default'  => 'addax-blog-full',
+    )
+    )
+  ));
+
 	/* ================ CUSTOM STYLES SECTION ============== */
 
 	Redux::setSection( $opt_name, array(
@@ -482,6 +503,8 @@
 				),
 		)
 	));
+
+
 
 	/* ================ CUSTOM SCRIPTS SECTION ============== */
 
@@ -510,6 +533,7 @@
 				),
 		)
 	));
+
 
 
 	/* ================ TYPOGRAPHY SECTION ============== */

@@ -83,15 +83,6 @@
                    <a href="<?php echo esc_html( $button_two_link ); ?>" class="btn light-btn btn-round btn-right"><?php echo esc_html_e( $button_two_text , 'addax' ); ?></a>
                   <?php }  }?>
 
-                  <?php if( !empty( $btn_form_option ) && $btn_form_option == 'form' ) { ?>
-                  <p style="color:#0076ff;"><i>Lorem ipsum dolor sit amet</i> </p>
-                  <form class="subscription-form">
-                      <input type="text" class="subscription-name" placeholder="Your Full Name">
-                      <input type="text" class="subscription-email" placeholder="Your Email Address">
-                      <input type="submit" class="subscription-btn" value="Get Updates">
-                  </form>
-                  <?php  } ?>
-
                 </div>
             </div>
 

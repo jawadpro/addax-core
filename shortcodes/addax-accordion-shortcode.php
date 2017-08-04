@@ -4,8 +4,7 @@
   if ( ! function_exists( 'addax_accordion_html_callback' ) ) {
 
     function addax_accordion_html_callback( $atts , $content = NULL ) {
-
-
+      
     ob_start();
     ?>
 

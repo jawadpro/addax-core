@@ -171,10 +171,10 @@ class addax_core {
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+			'supports'           => array( 'title', 'editor', 'thumbnail' )
 		);
 
-		register_post_type( 'project', $args );
+		register_post_type( 'addax-project', $args );
 
 		$labels = array(
 			'name'               => _x( 'Team', 'post type general name', 'addax_core' ),
@@ -248,7 +248,8 @@ class addax_core {
 }
 
 function addax_core_register_taxonomies() {
-		//CATEGORIES TAXONOMY REGISTER
+
+		//SLIDE POST TYPE CATEGORY
 		$labels = array(
 			'name'                       => _x( 'Slider', 'taxonomy general name' , 'addax_core' ),
 			'singular_name'              => _x( 'Slider', 'taxonomy singular name' , 'addax_core' ),
@@ -279,6 +280,41 @@ function addax_core_register_taxonomies() {
 		);
 
 		register_taxonomy( 'adx-slider-category', 'addax-slider', $args );
+
+
+
+		//PROJECT POST TYPE CATEGORY
+
+		$labels = array(
+		  'name'                       => _x( 'Project Category', 'taxonomy general name' , 'addax_core' ),
+		  'singular_name'              => _x( 'Project Category', 'taxonomy singular name' , 'addax_core' ),
+		  'search_items'               => __( 'Search Project Categories' , 'addax_core' ),
+		  'popular_items'              => __( 'Popular Project Categories' , 'addax_core' ),
+		  'all_items'                  => __( 'All Project Categories' , 'addax_core' ),
+		  'parent_item'                => null,
+		  'parent_item_colon'          => null,
+		  'edit_item'                  => __( 'Edit Project Category' , 'addax_core' ),
+		  'update_item'                => __( 'Update Project Category' , 'addax_core' ),
+		  'add_new_item'               => __( 'Add New Project Category' , 'addax_core' ),
+		  'new_item_name'              => __( 'New Project Category Name' , 'addax_core' ),
+		  'separate_items_with_commas' => __( 'Separate categories with commas' , 'addax_core' ),
+		  'add_or_remove_items'        => __( 'Add or remove categories' , 'addax_core' ),
+		  'choose_from_most_used'      => __( 'Choose from the most used categories' , 'addax_core' ),
+		  'not_found'                  => __( 'No categories found.' , 'addax_core' ),
+		  'menu_name'                  => __( 'Project Categories' , 'addax_core' ),
+		);
+
+		$args = array(
+		  'hierarchical'          => true,
+		  'labels'                => $labels,
+		  'show_ui'               => true,
+		  'show_admin_column'     => true,
+		  'update_count_callback' => '_update_post_term_count',
+		  'query_var'             => true,
+		  'rewrite'               => array( 'slug' => 'adx-project-category' ),
+		);
+
+		register_taxonomy( 'adx-project-category', 'addax-project' , $args );
 
 	}
 
@@ -322,6 +358,9 @@ endif; // class_exists check
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-testimonials-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-team-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-accordion-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-project-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-counter-shortcode.php';
+
 
 
 
