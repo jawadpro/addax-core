@@ -360,6 +360,8 @@ endif; // class_exists check
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-accordion-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-project-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-counter-shortcode.php';
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-skillbar-shortcode.php';
+
 
 
 

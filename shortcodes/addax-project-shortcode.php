@@ -1,5 +1,5 @@
 <?php
-  add_shortcode( 'addax-project' , 'addax_project_html_callback' );
+  add_shortcode( 'addax_project' , 'addax_project_html_callback' );
 
   if ( ! function_exists( 'addax_project_html_callback' ) ) {
 
@@ -34,8 +34,18 @@
 
           <div class="col-md-4 vcenter">
 
-              <h1 class="addax-heading alignLeft">Our Work</h1>
-              <h2 class="addax-subheading alignLeft">Work that makes us proud</h2>
+
+                <?php if( !empty( $heading ) ) { ?>
+                  <h1 class="addax-heading alignLeft">
+                    <?php echo esc_html_e( $heading , 'addax' ); ?>
+                  </h1>
+                <?php } ?>
+
+                <?php if( !empty( $sub_title ) ) { ?>
+                  <h2 class="addax-subheading alignLeft">
+                    <?php echo esc_html_e( $sub_title , 'addax' ); ?>
+                  </h2>
+                <?php } ?>
 
           </div>
           <div class="col-md-8 vcenter">
@@ -71,26 +81,26 @@
         if ( !empty( $terms ) ){
             $term = array_shift( $terms );
         }
-
+        $post_thumbnail = get_the_post_thumbnail_url( $post->ID , 'large' );
         ?>
 
             <div class="mix <?php echo $term->slug; ?>">
 
-              <div class="ap-single">
+              <div class="ap-single col-md-3" style="border:1px solid #f00;">
 
 
-                <div class="ap-img">
-                  <img src="assets/img/port1.jpg">
-                </div>
+                <!-- <div class="ap-img">
+                  <img src="<?php echo $post_thumbnail; ?>">
+                </div> -->
 
                 <div class="ap-content">
 
-                  <h3>Web Design / Development</h3>
-                  <h1>Project Title</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod tincidunt odio, vitae suscipit neque tempus ut.</p>
+                  <h3><?php echo $term->slug; ?></h3>
+                  <h1><?php __( the_title() , 'addax' ); ?></h1>
+                  <p><?php __( the_excerpt() , 'addax' ); ?></p>
 
                     <div class="ap-links">
-                      <a href="assets/img/port1.jpg" class="addax-lb-trigger"><i class="fa fa-search" aria-hidden="true"></i>
+                      <a href="<?php echo $post_thumbnail; ?>" class="addax-lb-trigger"><i class="fa fa-search" aria-hidden="true"></i>
                         <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -104,26 +114,17 @@
       <?php endwhile; wp_reset_postdata(); ?>
         </div>
 
-        <!-- <div class="row">
-
-            <div class="col-sm-12 af-error">
-                <p class="alignCenter">Sorry No Matching Item Found !</p>
-            </div>
-
-
-        </div> -->
-
 
       </div>
 
-      <!-- <div id="addax-lightbox" >
+      <div id="addax-lightbox" style="display:none;">
         <a href="#" class="close-lightbox">
           <i class="fa fa-times" aria-hidden="true"></i>
         </a>
         <div id="lightbox-content">
 
         </div>
-      </div> -->
+      </div>
 
     </div>
 
@@ -136,5 +137,43 @@
   endif;
   }
 }
+
+
+// Visual Composer Map
+function addax_vc_map_project()
+{
+
+
+	vc_map( array(
+
+      'name'										=> esc_html__( 'Addax Projects', 'addax' ),
+      'base' 				      		  => 'addax_project',
+      'category'				  			=> esc_html__( 'Addax', 'addax' ),
+      'icon'                    => get_template_directory_uri().'/assets/img/adx-fav.png',
+      'show_settings_on_create' => true,
+      'content_element' 		  	=> true,
+      'is_container' 			  		=> true,
+	    'params' => array(
+
+					array(
+					    "type"					=> "textfield",
+					    "heading" 			=> __("Main Heading", "addax"),
+					    "param_name"    => "heading",
+					    "description"   => __("Enter section heading here.", "addax")
+					),
+					array(
+							 "type" 				=> "textfield",
+							 "heading" 		  => __( "Sub Heading", "addax" ),
+							 "param_name" 	=> "sub_title",
+							 "description"  => __("Enter sub title here.", "addax")
+						 ),
+
+			)
+
+	) );
+
+}
+
+add_action( 'vc_before_init', 'addax_vc_map_project' );
 
 ?>
