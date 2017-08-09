@@ -47,7 +47,7 @@
 
   <div id="addax-testimonial" class="style1 <?php echo $parallax; ?>" style="background:url('<?php echo $bg_image[0]; ?>');">
 
-      <div class="container">
+      <div class="testimonial-container">
       <?php if( !empty( $heading ) ) { ?>
       <h1 class="at-title" style="color:<?php echo $text_color; ?> !important;"><?php echo esc_html_e( $heading, 'addax' ); ?></h1>
       <?php } ?>

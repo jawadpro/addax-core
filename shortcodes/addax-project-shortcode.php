@@ -32,7 +32,7 @@
 
         <div class="row ap-heading">
 
-          <div class="col-md-4 vcenter">
+          <div class="col-md-12">
 
 
                 <?php if( !empty( $heading ) ) { ?>
@@ -48,7 +48,7 @@
                 <?php } ?>
 
           </div>
-          <div class="col-md-8 vcenter">
+          <div class="col-md-12">
 
                 <div class="addax-filters">
                   <button class="filter selected" data-filter="all">All</button>
