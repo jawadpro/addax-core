@@ -1,5 +1,5 @@
 <?php
-  add_shortcode( 'addax-slider' , 'addax_slider_html_callback' );
+  add_shortcode( 'addax_slider' , 'addax_slider_html_callback' );
 
   if ( ! function_exists( 'addax_slider_html_callback' ) ) {
 

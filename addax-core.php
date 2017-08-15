@@ -97,7 +97,7 @@ class addax_core {
 	function addax_slider_column_content( $value, $column, $tax_id ){
 		if ($column === 'shortcode') {
 			$category = get_category($tax_id);
-			echo '[addax-slider slider="'. $category->slug .'" ]';
+			echo '[addax_slider slider="'. $category->slug .'" ]';
 		}
 	}
 
@@ -361,9 +361,4 @@ endif; // class_exists check
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-project-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-counter-shortcode.php';
 	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-skillbar-shortcode.php';
-
-
-
-
-
-?>
+	require_once WP_PLUGIN_DIR . '/addax-core/shortcodes/addax-iconbox-shortcode.php';
