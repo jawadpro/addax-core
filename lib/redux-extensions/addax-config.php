@@ -212,85 +212,213 @@
   							'alt'   => 'Header Two',
   							'img'   => get_template_directory_uri ().'/images/header-one.png'
   						),
+              'style3'  => array(
+  							'alt'   => 'Header Three',
+  							'img'   => get_template_directory_uri ().'/images/header-one.png'
+  						),
   					),
   					'default' => 'style1'
   				),
 
           array(
-            'id'       => 'transparent-header-checkbox',
-            'type'     => 'switch',
-            'title'    => __('Transparent Header', 'addax' ),
-            'subtitle'     => __('This will make header background transparent', 'addax'),
-            'on' => __('Enable', 'addax'),
-            'off' => __('Disable', 'addax'),
-            'default'  => '0'
+              'id'   => 'info_warning',
+              'type' => 'info',
+              'style' => 'info',
+              'desc' => __('Widgets Below are shown only on Header Layout 3', 'redux-framework-demo')
           ),
 
-          array(
-            'id'       => 'header-search',
-            'type'     => 'switch',
-            'title'    => __('Header Search', 'addax' ),
-            'subtitle'     => __('Enable/Disable header search.', 'addax'),
-            'on' => __('Enable', 'addax'),
-            'off' => __('Disable', 'addax'),
-            'default'  => '0'
-          ),
+          //ACCORDION ONE
+            array(
+                'id'        => 'header-widget-one-begin',
+                'type'      => 'accordion',
+                'title'     => __( 'Header Widget 1', 'addax' ),
+                'subtitle'  => __( 'Widget Area for header', 'addax' ),
+                'position'  => 'start',
+            ),
+                array(
+                    'id'       => 'widget-one-icon',
+                    'type'     => 'text',
+                    'title'    =>  __( 'Select Icon for Widget' , 'addax' ),
+                    'subtitle' => __( 'You can add icon from <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> e.g "fa fa-address-book-o"' , 'addax' )
+                ),
 
-          array(
-            'id'       => 'addax-topbar',
-            'type'     => 'switch',
-            'title'    => __('Header Topbar', 'addax' ),
-            'subtitle'     => __('Enable/Disable Topbar', 'addax'),
-            'on' => __('Enable', 'addax'),
-            'off' => __('Disable', 'addax'),
-            'default'  => '0'
-          ),
+                array(
+                    'id'       => 'widget-one-title',
+                    'type'     => 'text',
+                    'title'    => __( 'Widget Title' , 'addax' ),
+                    'subtitle' =>  __( 'Enter title for widget here' , 'addax' )
+                ),
 
-          array(
-            'id'       => 'topbar-text',
-            'type'     => 'text',
-            'title'    => __('Topbar Text', 'addax' ),
-            'default'  => 'Call Us Today:',
-            'required' => array(
-    								array('addax-topbar','equals', true)
-    							)
-    				),
+                array(
+                    'id'       => 'widget-one-subtitle',
+                    'type'     => 'text',
+                    'title'    => __( 'Widget Sub-Title' , 'addax' ),
+                    'subtitle' =>  __( 'Enter sub-title for widget here' , 'addax' )
+                ),
 
             array(
-              'id'       => 'topbar-phone',
+                'id'        => 'header-widget-one-end',
+                'type'      => 'accordion',
+                'position'  => 'end'
+            ),
+
+            //ACCORDION TWO
+              array(
+                  'id'        => 'header-widget-two-begin',
+                  'type'      => 'accordion',
+                  'title'     => __( 'Header Widget 2', 'addax' ),
+                  'subtitle'  => __( 'Widget Area for header', 'addax' ),
+                  'position'  => 'start',
+              ),
+                  array(
+                      'id'       => 'widget-two-icon',
+                      'type'     => 'text',
+                      'title'    =>  __( 'Select Icon for Widget' , 'addax' ),
+                      'subtitle' => __( 'You can add icon from <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> e.g "fa fa-address-book-o"' , 'addax' )
+                  ),
+
+                  array(
+                      'id'       => 'widget-two-title',
+                      'type'     => 'text',
+                      'title'    => __( 'Widget Title' , 'addax' ),
+                      'subtitle' =>  __( 'Enter title for widget here' , 'addax' )
+                  ),
+
+                  array(
+                      'id'       => 'widget-two-subtitle',
+                      'type'     => 'text',
+                      'title'    => __( 'Widget Sub-Title' , 'addax' ),
+                      'subtitle' =>  __( 'Enter sub-title for widget here' , 'addax' )
+                  ),
+
+              array(
+                  'id'        => 'header-widget-two-end',
+                  'type'      => 'accordion',
+                  'position'  => 'end'
+              ),
+
+              //ACCORDION THREE
+                array(
+                    'id'        => 'header-widget-three-begin',
+                    'type'      => 'accordion',
+                    'title'     => __( 'Header Widget 3', 'addax' ),
+                    'subtitle'  => __( 'Widget Area for header', 'addax' ),
+                    'position'  => 'start',
+                ),
+                    array(
+                        'id'       => 'widget-three-icon',
+                        'type'     => 'text',
+                        'title'    =>  __( 'Select Icon for Widget' , 'addax' ),
+                        'subtitle' => __( 'You can add icon from <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a> e.g "fa fa-address-book-o"' , 'addax' )
+                    ),
+
+                    array(
+                        'id'       => 'widget-three-title',
+                        'type'     => 'text',
+                        'title'    => __( 'Widget Title' , 'addax' ),
+                        'subtitle' =>  __( 'Enter title for widget here' , 'addax' )
+                    ),
+
+                    array(
+                        'id'       => 'widget-three-subtitle',
+                        'type'     => 'text',
+                        'title'    => __( 'Widget Sub-Title' , 'addax' ),
+                        'subtitle' =>  __( 'Enter sub-title for widget here' , 'addax' )
+                    ),
+
+                array(
+                    'id'        => 'header-widget-three-end',
+                    'type'      => 'accordion',
+                    'position'  => 'end'
+                ),
+
+          )
+
+  	));
+
+    Redux::setSection( $opt_name, array(
+          'title'      => esc_html__( 'Header Extra', 'addax' ),
+          'id'         => 'header-extra-section',
+          'subsection' => true,
+      		'icon'       => 'fa fa-bars',
+      		'fields'	 => array(
+
+            array(
+              'id'       => 'transparent-header-checkbox',
+              'type'     => 'switch',
+              'title'    => __('Transparent Header', 'addax' ),
+              'subtitle'     => __('This will make header background transparent', 'addax'),
+              'on' => __('Enable', 'addax'),
+              'off' => __('Disable', 'addax'),
+              'default'  => '0'
+            ),
+
+            array(
+              'id'       => 'header-search',
+              'type'     => 'switch',
+              'title'    => __('Header Search', 'addax' ),
+              'subtitle'     => __('Enable/Disable header search.', 'addax'),
+              'on' => __('Enable', 'addax'),
+              'off' => __('Disable', 'addax'),
+              'default'  => '0'
+            ),
+
+            array(
+              'id'       => 'addax-topbar',
+              'type'     => 'switch',
+              'title'    => __('Header Topbar', 'addax' ),
+              'subtitle'     => __('Enable/Disable Topbar', 'addax'),
+              'on' => __('Enable', 'addax'),
+              'off' => __('Disable', 'addax'),
+              'default'  => '0'
+            ),
+
+            array(
+              'id'       => 'topbar-text',
               'type'     => 'text',
-              'title'    => __('Topbar Contact Number', 'addax' ),
-              'default'  => '123-456-789',
+              'title'    => __('Topbar Text', 'addax' ),
+              'default'  => 'Call Us Today:',
               'required' => array(
       								array('addax-topbar','equals', true)
       							)
       				),
 
               array(
-                'id'       => 'topbar-email',
+                'id'       => 'topbar-phone',
                 'type'     => 'text',
-                'title'    => __('Topbar Email', 'addax' ),
-                'default'  => 'email@website.com',
+                'title'    => __('Topbar Contact Number', 'addax' ),
+                'default'  => '123-456-789',
                 'required' => array(
         								array('addax-topbar','equals', true)
         							)
         				),
+
                 array(
-                  'id'       => 'topbar-social',
-                  'type'     => 'switch',
-                  'title'    => __('Topbar Social Icons', 'addax' ),
-                  'on' => __('Enable', 'addax'),
-                  'off' => __('Disable', 'addax'),
-                  'default' => false,
+                  'id'       => 'topbar-email',
+                  'type'     => 'text',
+                  'title'    => __('Topbar Email', 'addax' ),
+                  'default'  => 'email@website.com',
                   'required' => array(
           								array('addax-topbar','equals', true)
-          							),
-                  'subtitle'     => __('Enable/Disable social icons.', 'addax'),
+          							)
           				),
+                  array(
+                    'id'       => 'topbar-social',
+                    'type'     => 'switch',
+                    'title'    => __('Topbar Social Icons', 'addax' ),
+                    'on' => __('Enable', 'addax'),
+                    'off' => __('Disable', 'addax'),
+                    'default' => false,
+                    'required' => array(
+            								array('addax-topbar','equals', true)
+            							),
+                    'subtitle'     => __('Enable/Disable social icons.', 'addax'),
+            				),
+
 
           )
-
-  	));
+        )
+      );
 
 
     Redux::setSection( $opt_name, array(
@@ -457,6 +585,62 @@
 		)
 	);
 
+  /* ================ SOCIAL ICONS ============== */
+
+  Redux::setSection( $opt_name, array(
+        'title'      => esc_html__( 'Social Icons', 'addax' ),
+        'desc'  => esc_html__('Add social icons url here. Leave empty if you don\'t want to show any icon on website.', 'addax'),
+        'id'         => 'social-icons',
+        'icon'       => 'fa fa-bars',
+        'fields'	 => array(
+
+          array(
+            'id'       => 'facebook-link',
+            'type'     => 'text',
+            'title'    => __('Facebook', 'addax' ),
+            'default'  => '#',
+            ),
+
+          array(
+            'id'       => 'twitter-link',
+            'type'     => 'text',
+            'title'    => __('Twitter', 'addax' ),
+            'default'  => '#',
+            ),
+
+          array(
+            'id'       => 'google-link',
+            'type'     => 'text',
+            'title'    => __('Google+', 'addax' ),
+            'default'  => '#',
+            ),
+
+          array(
+            'id'       => 'linkedin-link',
+            'type'     => 'text',
+            'title'    => __('Linkedin', 'addax' ),
+            'default'  => '#',
+            ),
+
+          array(
+            'id'       => 'youtube-link',
+            'type'     => 'text',
+            'title'    => __('Youtube', 'addax' ),
+            'default'  => '#',
+            ),
+
+          array(
+            'id'       => 'pinterest-link',
+            'type'     => 'text',
+            'title'    => __('Pinterest', 'addax' ),
+            'default'  => '#',
+            ),
+
+
+
+    )
+  ));
+
   /* ================ BLOG SECTION ============== */
 
   Redux::setSection( $opt_name, array(
@@ -474,7 +658,16 @@
             'addax-masonry' => 'Masonry',
         ),
         'default'  => 'addax-blog-full',
-    )
+    ),
+
+      array(
+        'id'       => 'single-post-title-text',
+        'type'     => 'text',
+        'title'    => __('Single post title text', 'addax' ),
+        'default'  => 'Blog Post',
+        'subtitle'     => __('This is text for title bar on single post page', 'addax'),
+        ),
+
     )
   ));
 

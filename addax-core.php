@@ -342,6 +342,7 @@ endif; // class_exists check
 
 	if ( class_exists( 'ReduxFrameworkPlugin' ) && file_exists( WP_PLUGIN_DIR .'/addax-core/lib/redux-extensions/addax-config.php' ) ) {
 	 if( class_exists('addax_core') ){
+		 require_once( WP_PLUGIN_DIR .'/addax-core/lib/loader.php' );
 		 require_once( WP_PLUGIN_DIR .'/addax-core/lib/redux-extensions/addax-config.php' );
 	 }
 	}
