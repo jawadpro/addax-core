@@ -86,12 +86,12 @@
 
             <div class="mix <?php echo $term->slug; ?>">
 
-              <div class="ap-single col-md-3" style="border:1px solid #f00;">
+              <div class="ap-single col-md-3">
 
 
-                <!-- <div class="ap-img">
+                 <div class="ap-img">
                   <img src="<?php echo $post_thumbnail; ?>">
-                </div> -->
+                </div>
 
                 <div class="ap-content">
 

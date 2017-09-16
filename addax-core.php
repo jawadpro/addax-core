@@ -20,7 +20,6 @@ class addax_core {
 	// vars
 	var $settings;
 
-
 	function __construct() {
 
 		add_action( 'plugins_loaded', 'addax_core_load_textdomain' );
@@ -50,8 +49,8 @@ class addax_core {
 
 		add_action( 'init', array ( $this, 'addax_core_register_post_types' ) );
 		add_action( 'init', array ( $this, 'addax_core_register_taxonomies' ) );
-		add_filter( 'manage_edit-adx-slider-category_columns' , array ( $this, 'addax_slider_custom_column_header' ), 10);
-		add_action( 'manage_adx-slider-category_custom_column' , array ( $this, 'addax_slider_column_content' ) , 10, 3);
+		add_filter( 'manage_edit-adx_slider_category_columns' , array ( $this, 'addax_slider_custom_column_header' ), 10);
+		add_action( 'manage_adx_slider_category_custom_column' , array ( $this, 'addax_slider_column_content' ) , 10, 3);
 		add_filter( 'manage_edit-addax-slider_columns' , array ( $this, 'addax_image_thumbnail_custom_cl' ) );
 		add_action( 'manage_addax-slider_posts_custom_column' , array ( $this, 'addax_im_thumb_custom_cl_value' ) , 10, 2);
 	}
@@ -276,11 +275,10 @@ function addax_core_register_taxonomies() {
 			'show_admin_column'     => true,
 			'update_count_callback' => '_update_post_term_count',
 			'query_var'             => true,
-			'rewrite'               => array( 'slug' => 'adx-slider' ),
+			'rewrite'               => array( 'slug' => 'adx_slider_category' ),
 		);
 
-		register_taxonomy( 'adx-slider-category', 'addax-slider', $args );
-
+		register_taxonomy( 'adx_slider_category', 'addax-slider', $args );
 
 
 		//PROJECT POST TYPE CATEGORY
@@ -318,6 +316,8 @@ function addax_core_register_taxonomies() {
 
 	}
 
+
+
 }
 
 function addax_core() {
@@ -346,6 +346,7 @@ endif; // class_exists check
 		 require_once( WP_PLUGIN_DIR .'/addax-core/lib/redux-extensions/addax-config.php' );
 	 }
 	}
+
 
 	/* ======== ADDAX METABOX INTEGRATION ========= */
 	require_once WP_PLUGIN_DIR . '/addax-core/lib/meta-box/meta-box.php';

@@ -3,11 +3,13 @@
 
   if ( ! function_exists( 'addax_slider_html_callback' ) ) {
 
-    function addax_slider_html_callback( $atts ) {
+    function addax_slider_html_callback( $atts , $content = NULL ) {
 
       extract( shortcode_atts( array(
 
 				'slider'  => '',
+        'hide_nav' => '',
+        'hide_scroll_arrow' => ''
 
 			), $atts ) );
 
@@ -16,7 +18,7 @@
   	     'post_type' => 'addax-slider',
   	     'tax_query' => array(
     		array(
-    			 'taxonomy' => 'adx-slider-category',
+    			 'taxonomy' => 'adx_slider_category',
     			 'field'    => 'slug',
     			 'terms'    => $slider,
     		   ),
@@ -91,6 +93,7 @@
       </div>
 
       <!-- hero section ends here -->
+      <?php if( $hide_nav !== true ) : ?>
       <!--hero carousel controller-->
       <div class="addax-hero-controller">
         <button class="ah-left-btn">
@@ -103,6 +106,7 @@
         </button>
       </div>
       <!--hero carousel controller-->
+    <?php endif; ?>
 
       <a href="#" class="scrollDown">
               <i class="fa fa-angle-down" aria-hidden="true"></i>

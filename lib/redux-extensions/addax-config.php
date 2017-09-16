@@ -147,6 +147,14 @@
 		'fields'	 => array(
 
       array(
+        'id'       => 'gmap-api',
+        'type'     => 'text',
+        'title'    => __('Google Map key', 'addax' ),
+        'default'  => '',
+        'subtitle'     => __('Get Google key from here <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Get Key</a>', 'addax'),
+        ),
+
+      array(
         'id'       => 'mailchimp-api',
         'type'     => 'text',
         'title'    => __('Mailchimp Api', 'addax' ),
@@ -739,14 +747,14 @@
 				array(
 					'id'          => 'menu-typography',
 					'type'        => 'typography',
-					'title'       => esc_html__('Main & Sticky Menu Typography', 'addax'),
+					'title'       => esc_html__('Navigation Typography', 'addax'),
 					'google'      => true,
 					'font-backup' => true,
-					'output'      => array('.header ul li a','.header .navigation .language a','.cd-primary-nav a'),
+					'output'      => array('#addax-header .dropdown-header, #addax-header .nav a' ),
 					'units'       =>'px',
 					'color'		  => false,
-					'font-size'   => false,
-       				'line-height' => false,
+					'font-size'   => true,
+       		'line-height' => false,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',
@@ -761,10 +769,10 @@
 					'title'       => esc_html__('Body Typography', 'addax'),
 					'google'      => true,
 					'font-backup' => true,
-					'output'      => array('body span p'),
+					'output'      => array('html , body , p , span , article , div'),
 					'units'       =>'px',
 					'color'		  => false,
-					'font-size'   => false,
+					'font-size'   => true,
        				'line-height' => false,
 					'text-align'  => false,
 					'default'     => array(
@@ -783,8 +791,8 @@
 					'font-backup' => true,
 					'output'      => array('h1'),
 					'units'       =>'px',
-					'font-size'   => false,
-       				'line-height' => false,
+					'font-size'   => true,
+       		'line-height' => false,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',
@@ -800,7 +808,7 @@
 					'font-backup' => true,
 					'output'      => array('h2'),
 					'units'       =>'px',
-					'font-size'   => false,
+					'font-size'   => true,
        				'line-height' => false,
 					'text-align'  => false,
 					'default'     => array(
@@ -817,7 +825,7 @@
 					'font-backup' => true,
 					'output'      => array('h3'),
 					'units'       =>'px',
-					'font-size'   => false,
+					'font-size'   => true,
        				'line-height' => false,
 					'text-align'  => false,
 					'default'     => array(
@@ -834,7 +842,7 @@
 					'font-backup' => true,
 					'output'      => array('h4'),
 					'units'       =>'px',
-					'font-size'   => false,
+					'font-size'   => true,
        				'line-height' => false,
 					'text-align'  => false,
 					'default'     => array(
@@ -851,8 +859,8 @@
 					'font-backup' => true,
 					'output'      => array('h5'),
 					'units'       =>'px',
-					'font-size'   => false,
-       				'line-height' => false,
+					'font-size'   => true,
+       		'line-height' => false,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',
