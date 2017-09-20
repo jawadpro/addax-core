@@ -84,7 +84,7 @@
         $post_thumbnail = get_the_post_thumbnail_url( $post->ID , 'large' );
         ?>
 
-            <div class="mix <?php echo $term->slug; ?>">
+            <div class="mix <?php ( !empty( $term ) ) ?  $term->slug : ''; ?>">
 
               <div class="ap-single col-md-3">
 
@@ -95,7 +95,7 @@
 
                 <div class="ap-content">
 
-                  <h3><?php echo $term->slug; ?></h3>
+                  <h3><?php ( !empty( $term ) ) ?  __( $term->slug , 'addax' ) : ''; ?> </h3>
                   <h1><?php __( the_title() , 'addax' ); ?></h1>
                   <p><?php __( the_excerpt() , 'addax' ); ?></p>
 

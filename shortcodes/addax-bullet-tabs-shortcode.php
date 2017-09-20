@@ -1,123 +1,137 @@
 <?php
-  add_shortcode( 'addax_bullet_tabs' , 'addax_bullet_tabs_html_callback' );
+if ( ! function_exists( 'addax_tabs_html_callback' ) ) {
 
-  if ( ! function_exists( 'addax_bullet_tabs_html_callback' ) ) {
+	function addax_tabs_html_callback( $atts , $content = NULL ){
 
-    function addax_bullet_tabs_html_callback( $atts , $content = NULL ) {
+		extract( shortcode_atts( array(
 
-    ob_start();
-    ?>
+				'tabs'   		=> '',
 
-    <div id="addax-tab" class="bullet-tab" >
+			), $atts ) );
 
-      <ul class="nav nav-tabs">
-
-        <li class="active"><a data-toggle="tab" href="#home">Order Placing
-          <span class="circle"></span>
-        </a>
-
-        </li>
-
-      </ul>
-
-      <div class="tab-content">
-
-        <?php echo do_shortcode( $content ); ?>
-
-      </div>
-
-  </div>
+			ob_start(); ?>
 
 
+	     <div id="addax-tab" class="bullet-tab" >
 
-    <?php
-    return ob_get_clean();
-  }
+			<?php
+			if( !empty( $tabs ) ) {
+
+				if( function_exists( 'vc_param_group_parse_atts' ) ) {
+
+					$tabs = vc_param_group_parse_atts( $tabs );
+					$i = 0;
+
+					?>
+							<ul class="nav nav-tabs">
+
+							<?php
+              foreach( $tabs as $single_tab ) {
+                $split_words = str_replace( ' ' , '<br>' , $single_tab['tab_title'] );
+                ?>
+                <li class="<?php	if( $i == 0 ) { echo 'active'; } ?>"><a data-toggle="tab" href="#<?php echo 'tab-' . $i; ?>"><?php echo $split_words; ?>
+                  <span class="circle"></span>
+                </a>
+                </li>
+
+								<?php $i++; ?>
+
+							<?php } ?>
+
+						 	</ul>
+
+              <div class="tab-content">
+
+							<?php
+							$i = 0;
+
+							foreach( $tabs as $single_tab ) { ?>
+
+              <div id="<?php echo 'tab-' . $i; ?>" class="tab-pane fade <?php	if( $i == 0 ) { echo 'active in'; } ?>">
+                  <?php
+                  $image_url = '';
+                  $image_id = ( isset( $single_tab['tab_image'] ) ) ? $single_tab['tab_image'] : '';
+                  if( !empty( $image_id ) ) :
+                    $get_image = wp_get_attachment_image_src( $image_id , 'addax-tab-image' );
+                    $image_url = $get_image[0];
+                  endif;
+                  ?>
+                <p class="alignright"><img src="<?php echo $image_url; ?>"><p>
+								<p><?php _e( $single_tab['tab_text'] , 'addax' ); ?></p>
+
+							</div>
+
+							<?php $i++; ?>
+
+
+						 <?php } ?>
+
+						</div>
+
+					<?php }
+         } ?>
+</div>
+          <?php
+
+		 return ob_get_clean();
+	}
 }
-
-// Client Image Shortcode
-add_shortcode( 'addax_client_image' , 'addax_client_image_html_callback' );
-
-if ( ! function_exists( 'addax_client_image_html_callback' ) ) {
-
-  function addax_client_image_html_callback( $atts , $content = NULL ) {
-
-    extract( shortcode_atts( array(
-
-      'image' => ''
-
-    ), $atts ) );
-
-  if( !empty( $image ) ){
-    $image = wp_get_attachment_url( $image , 'large' );
-  }
-
-  ob_start();
-  ?>
-
-  <div class="ac-client">
-      <img src="<?php echo $image; ?>">
-  </div>
-
-
-  <?php
-  return ob_get_clean();
-}
-}
-
+add_shortcode('addax_tabs', 'addax_tabs_html_callback');
 
 // Visual Composer Map
-function addax_vc_map_clients()
+function addax_vc_map_bullet_tabs()
 {
 
-  vc_map( array(
-
-			'name'										=> esc_html__( 'Addax Clients', 'addax' ),
-			'base' 				      		  => 'addax_clients',
+		vc_map(
+    array(
+			'name'										=> esc_html__( 'Addax Bullet Tabs', 'addax' ),
+			'base' 				      		  => 'addax_tabs',
 			'category'				  			=> esc_html__( 'Addax', 'addax' ),
-			'icon'                    => get_template_directory_uri().'/assets/img/adx-fav.png',
-      'as_parent' 								=> array('only' => 'addax_client_image'),
-			'show_settings_on_create' => false,
+			//'icon'                    => get_template_directory_uri().'/images/addax-icon-vc.png',
+			'show_settings_on_create' => true,
 			'content_element' 		  	=> true,
-	    'is_container' 			  		=> false,
-			'js_view' 				  			=> 'VcColumnView',
+			'is_container' 			  		=> false,
+        'params' => array(
+					array(
+            "param_name"		=> "info",
+							"description"		=> esc_html__("User Down Arrow on each tabs to toggle.", "addax")
+					),
 
-			)
-	);
+            // params group
+            array(
 
-	vc_map( array(
+                'type' => 'param_group',
+								"heading" 			=> __("Add Tabs", "addax"),
+								"param_name"		=> "text",
+								"description"		=> __("Add tab from + icon", "addax"),
+                'param_name' 		=> 'tabs',
+                'params' => array(
+                    array(
+                        'type' 				=> 'textfield',
+                        'value' 			=> '',
+                        'heading' 		=> esc_html__("Tab Title", "addax"),
+                        'param_name' 	=> 'tab_title',
+                    ),
+                    array(
+                        'type' 				=> 'attach_image',
+                        'value' 			=> '',
+                        'heading' 		=> esc_html__("Tab Image", "addax"),
+                        'param_name' 	=> 'tab_image',
+                    ),
+										array(
+                        'type' 				=> 'textarea',
+                        'value' 			=> '',
+                        'heading' 		=> esc_html__("Tab Text", "addax"),
+                        'param_name' 	=> 'tab_text',
+                    ),
 
-      'name'										=> esc_html__( 'Client Logo', 'addax' ),
-      'base' 				      		  => 'addax_client_image',
-      'icon'                    => get_template_directory_uri().'/assets/img/adx-fav.png',
-      'as_child' 								=> array('only' => 'addax_clients'),
-      'show_settings_on_create' => true,
-      'content_element' 		  	=> true,
-      'is_container' 			  		=> true,
-	    'params' => array(
-
-        array(
-            "type" 					=> "attach_image",
-            "heading" 			=> __("Add Image/Logo", "addax"),
-            "param_name"		=> "image",
-            "description"		=> __("Add image logo for your client.", "addax")
-            ),
-			)
-
-	) );
-
-  if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
-      class WPBakeryShortCode_addax_clients extends WPBakeryShortCodesContainer {
-      }
-  }
-  if ( class_exists( 'WPBakeryShortCode' ) ) {
-      class WPBakeryShortCode_addax_client_image extends WPBakeryShortCode {
-      }
-  }
-
-
+                )
+            )
+        )
+    )
+);
 }
 
-add_action( 'vc_before_init', 'addax_vc_map_clients' );
-
+add_action( 'vc_before_init', 'addax_vc_map_bullet_tabs' );
+////https//wpbakery.atlassian.net/wiki/display/VC/Use+Param+Group+in+Elements
 ?>
