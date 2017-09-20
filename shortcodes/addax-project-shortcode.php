@@ -32,9 +32,6 @@
 
         <div class="row ap-heading">
 
-          <div class="col-md-12">
-
-
                 <?php if( !empty( $heading ) ) { ?>
                   <h1 class="addax-heading alignLeft">
                     <?php echo esc_html_e( $heading , 'addax' ); ?>
@@ -48,7 +45,7 @@
                 <?php } ?>
 
           </div>
-          <div class="col-md-12">
+          <div class="row">
 
                 <div class="addax-filters">
                   <button class="filter selected" data-filter="all">All</button>
@@ -68,9 +65,6 @@
 
         </div>
 
-      </div>
-
-      <div class="container-full">
         <div class="addax-filter-gallery col4">
         <?php  while( $query->have_posts() ) : $query->the_post();
 
