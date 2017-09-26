@@ -30,8 +30,7 @@
     ob_start();
     ?>
 
-    <div class="container">
-
+    
 
           <?php if( !empty( $heading ) ){ ?>
 
@@ -53,8 +52,7 @@
 
         <?php } ?>
 
-    </div>
-
+    
 
     <?php
     return ob_get_clean();

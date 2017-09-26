@@ -3,34 +3,13 @@
 
   if ( ! function_exists( 'addax_counter_html_callback' ) ) {
 
-    function addax_counter_html_callback( $atts , $content = NULL ) {
-
-    ob_start();
-    ?>
-
-
-      <div class="container">
-
-          <?php echo do_shortcode($content); ?>
-
-      </div>
-
-    <?php
-    return ob_get_clean();
-  }
-}
-
-// Client Image Shortcode
-add_shortcode( 'addax_counter_item' , 'addax_counter_item_html_callback' );
-
-if ( ! function_exists( 'addax_counter_item_html_callback' ) ) {
-
-  function addax_counter_item_html_callback( $atts , $content = NULL ) {
+  function addax_counter_html_callback( $atts ) {
 
     extract( shortcode_atts( array(
 
       'number' => '',
       'text' => '',
+      'font_size' => '',
       'plus_sign' => '',
       'text_color' => ''
 
@@ -47,16 +26,20 @@ if ( ! function_exists( 'addax_counter_item_html_callback' ) ) {
       $text_color = $text_color;
     }
 
+    if( !empty( $font_size ) )
+    {
+      $font_size = 'style="font-size:'.$font_size.'px !important"';
+    }
+
   ob_start();
   ?>
 
-  <div class="col-md-3">
 
     <div class="addax-counter-box style1" style="color:<?php echo $text_color; ?> ">
 
        <?php if( !empty( $number ) ) { ?>
-         <h3>
-           <span class="counter"><?php echo $number; ?></span>
+         <h3 <?php echo $font_size; ?>>
+           <span class="counter" <?php echo $font_size; ?>><?php echo $number; ?></span>
            <?php echo $pSign; ?>
          </h3>
         <?php } ?>
@@ -66,9 +49,6 @@ if ( ! function_exists( 'addax_counter_item_html_callback' ) ) {
          <?php } ?>
 
     </div>
-
-  </div>
-
 
   <?php
   return ob_get_clean();
@@ -80,31 +60,16 @@ if ( ! function_exists( 'addax_counter_item_html_callback' ) ) {
 function addax_vc_map_counter()
 {
 
-  vc_map( array(
-
-			'name'										=> esc_html__( 'Addax Counter', 'addax' ),
-			'base' 				      		  => 'addax_counter',
-			'category'				  			=> esc_html__( 'Addax', 'addax' ),
-			'icon'                    => get_template_directory_uri().'/assets/img/adx-fav.png',
-      'as_parent' 								=> array('only' => 'addax_counter_item'),
-			'show_settings_on_create' => false,
-			'content_element' 		  	=> true,
-	    'is_container' 			  		=> false,
-			'js_view' 				  			=> 'VcColumnView',
-
-			)
-	);
-
 	vc_map( array(
 
-      'name'										=> esc_html__( 'Counter', 'addax' ),
-      'base' 				      		  => 'addax_counter_item',
+      'name'										=> esc_html__( 'Addax Counter', 'addax' ),
+      'base' 				      		  => 'addax_counter',
+      'category'				  			=> esc_html__( 'Addax', 'addax' ),
       'icon'                    => get_template_directory_uri().'/assets/img/adx-fav.png',
-      'as_child' 								=> array('only' => 'addax_counter'),
       'show_settings_on_create' => true,
       'content_element' 		  	=> true,
-      'is_container' 			  		=> true,
-	    'params' => array(
+      'is_container' 			  		=> false,
+      'params' => array(
 
         array(
             "type" 					=> "textfield",
@@ -114,7 +79,7 @@ function addax_vc_map_counter()
             ),
         array(
             "type" 					=> "checkbox",
-            "heading" 			=> __("Add + symbol?", "addax"),
+            "heading" 			=> __("Add '+' symbol ?", "addax"),
             "param_name"		=> "plus_sign",
             "description"		=> __("This will add '+' sign next to number.", "addax")
           ),
@@ -124,6 +89,12 @@ function addax_vc_map_counter()
             "param_name"		=> "text",
             "description"		=> __("Enter text for counter.", "addax")
           ),
+      array(
+          "type" 					=> "textfield",
+          "heading" 			=> __("Counter Font Size", "addax"),
+          "param_name"		=> "font_size",
+          "description"		=> __("Only Number Allowed without 'px'.", "addax")
+        ),
         array(
             "type" 					=> "colorpicker",
             "heading" 			=> __("Counter Text Color", "addax"),
@@ -131,19 +102,9 @@ function addax_vc_map_counter()
             "value" => '#555', //Default Red color
             "description"		=> __("Choose counter text color.", "addax")
           ),
-			)
+			) )
 
-	) );
-
-  if ( class_exists( 'WPBakeryShortCodesContainer' ) ) {
-      class WPBakeryShortCode_addax_counter extends WPBakeryShortCodesContainer {
-      }
-  }
-  if ( class_exists( 'WPBakeryShortCode' ) ) {
-      class WPBakeryShortCode_addax_counter_item extends WPBakeryShortCode {
-      }
-  }
-
+	);
 
 }
 

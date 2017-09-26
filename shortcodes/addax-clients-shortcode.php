@@ -8,16 +8,14 @@
     ob_start();
     ?>
 
-    <div class="container">
-
+    
       <div class="addax-client-carousel wow fadeInUp" data-client-quantity="4">
 
           <?php echo do_shortcode($content); ?>
 
       </div>
 
-    </div>
-
+    
 
     <?php
     return ob_get_clean();

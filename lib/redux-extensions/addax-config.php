@@ -773,7 +773,7 @@
 					'units'       =>'px',
 					'color'		  => false,
 					'font-size'   => true,
-       				'line-height' => false,
+       				'line-height' => true,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Roboto Slab',
@@ -792,7 +792,7 @@
 					'output'      => array('h1'),
 					'units'       =>'px',
 					'font-size'   => true,
-       		'line-height' => false,
+       		'line-height' => true,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',
@@ -809,7 +809,7 @@
 					'output'      => array('h2'),
 					'units'       =>'px',
 					'font-size'   => true,
-       				'line-height' => false,
+       				'line-height' => true,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',
@@ -826,7 +826,7 @@
 					'output'      => array('h3'),
 					'units'       =>'px',
 					'font-size'   => true,
-       				'line-height' => false,
+       				'line-height' => true,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',
@@ -843,7 +843,7 @@
 					'output'      => array('h4'),
 					'units'       =>'px',
 					'font-size'   => true,
-       				'line-height' => false,
+       				'line-height' => true,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',
@@ -860,7 +860,7 @@
 					'output'      => array('h5'),
 					'units'       =>'px',
 					'font-size'   => true,
-       		'line-height' => false,
+       		'line-height' => true,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',
@@ -877,7 +877,7 @@
 					'output'      => array('h6'),
 					'units'       =>'px',
 					'font-size'   => false,
-       				'line-height' => false,
+       				'line-height' => true,
 					'text-align'  => false,
 					'default'     => array(
 						'font-family' => 'Montserrat',

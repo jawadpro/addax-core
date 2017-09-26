@@ -41,6 +41,7 @@
         global $post;
         $slide_img_id = get_post_meta( $post->ID , 'slide_image' , true );
         $slide_img_url = wp_get_attachment_image_src( $slide_img_id , 'full' );
+        $slide_heading = get_post_meta( $post->ID , 'slide_heading' , true );
         $slide_sub_heading = get_post_meta( $post->ID , 'slide_sub_heading' , true );
         $slide_bg_overlay = get_post_meta( $post->ID , 'slide_bg_overlay' , true );
         $button_one_text = get_post_meta( $post->ID , 'button_one_text' , true );
@@ -52,7 +53,10 @@
         $sub_heading_text_size = get_post_meta( $post->ID , 'sub_heading_text_size' , true );
         $main_heading_text_color = get_post_meta( $post->ID , 'main_heading_text_color' , true );
         $sub_heading_text_color = get_post_meta( $post->ID , 'sub_heading_text_color' , true );
-        $btn_form_option = get_post_meta( $post->ID , 'btn_form_option' , true );
+        $slider_button_color_type = get_post_meta( $post->ID , 'slider_button_color_type' , true );
+        $button_solid_color = get_post_meta( $post->ID , 'button_solid_color' , true );
+        $to = get_post_meta( $post->ID , 'button_gradient_color_to' , true );
+        $from = get_post_meta( $post->ID , 'button_gradient_color_from' , true );
 
         if( $slide_img_url == false ) { $slide_img_url = ''; }
         if( $slide_bg_overlay == 'yes' ) { $slide_bg_overlay = 'slide-overlay'; }
@@ -63,27 +67,48 @@
         if( empty( $sub_heading_text_color ) ) { $sub_heading_text_color = '#fff'; }
         if( !empty( $main_heading_text_size ) ) { $main_heading_text_size = 'font-size:'.$main_heading_text_size.'px !important;'; }
         if( !empty( $sub_heading_text_size ) ) { $sub_heading_text_size = 'font-size:'.$main_heading_text_size.'px !important;'; }
+
+        //Button Background Color
+        if( $slider_button_color_type == 'solid' )
+        {
+
+            $btn_bg = '
+                    background: '. $button_solid_color .' !important;
+                  ';
+        }
+        elseif( $slider_button_color_type == 'gradient' )
+        {
+            $btn_bg = '
+            background: '. $to .' !important;
+            background: -webkit-linear-gradient( left , '. $to .', '. $from .') !important;
+            background: -o-linear-gradient( right, '. $to .', '. $from .') !important;
+            background: -moz-linear-gradient( right , '. $to .', '. $from .') !important;
+            background: linear-gradient( to right , '. $to .', '. $from .') !important;
+            ';
+
+        }
+
         ?>
 
              <div class="ah-content <?php echo $slide_bg_overlay; ?>" style="background-image:url('<?php echo $slide_img_url[0]; ?>')">
                 <div class="ah-holder <?php echo $content_position; ?>">
-                  <h1 style="<?php echo $main_heading_text_size; ?>color:<?php echo $main_heading_text_color; ?> !important;"><?php __( the_title() , 'addax' ); ?></h1>
-
-                  <?php if( !empty( $slide_sub_heading )  ) {  ?>
-                  <h3 style="<?php echo $sub_heading_text_size; ?>color:<?php echo $sub_heading_text_color; ?> !important;"><?php echo esc_html_e( $slide_sub_heading , 'addax' ); ?></h3>
+                  <?php if( !empty( $slide_heading )  ) {  ?>
+                  <h1 style="<?php echo $main_heading_text_size; ?>color:<?php echo $main_heading_text_color; ?> !important;"><?php echo __( $slide_heading , 'addax' ); ?></h1>
                   <?php } ?>
 
+                  <?php if( !empty( $slide_sub_heading )  ) {  ?>
+                  <h3 style="<?php echo $sub_heading_text_size; ?>color:<?php echo $sub_heading_text_color; ?> !important;"><?php esc_html_e( $slide_sub_heading , 'addax' ); ?></h3>
+                  <?php } ?>
 
 
                   <?php
-                  if( !empty( $btn_form_option ) && $btn_form_option == 'button' ) {
                    if( !empty( $button_one_text )  ) {  ?>
-                   <a href="<?php echo esc_html( $button_one_link ); ?>" class="btn btn-primary btn-round"><?php echo esc_html_e( $button_one_text , 'addax' ); ?></a>
+                   <a href="<?php echo esc_html( $button_one_link ); ?>" class="btn btn-primary btn-round" style="<?php echo $btn_bg; ?>"><?php echo esc_html_e( $button_one_text , 'addax' ); ?></a>
                   <?php } ?>
 
                   <?php if( !empty( $button_two_text )  ) {  ?>
-                   <a href="<?php echo esc_html( $button_two_link ); ?>" class="btn light-btn btn-round btn-right"><?php echo esc_html_e( $button_two_text , 'addax' ); ?></a>
-                  <?php }  }?>
+                   <a href="<?php echo esc_html( $button_one_link ); ?>" class="btn btn-primary btn-round" style="<?php echo $btn_bg; ?>"><?php echo esc_html_e( $button_two_text , 'addax' ); ?></a>
+                  <?php } ?>
 
                 </div>
             </div>

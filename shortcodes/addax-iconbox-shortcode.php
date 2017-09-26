@@ -7,18 +7,11 @@
     ob_start();
     ?>
 
-    <div id="addax-section" >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
+    
             <ul class="addax-icon-box drop-shadow">
               <?php echo do_shortcode( $content ); ?>
             </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
     <?php
     return ob_get_clean();
   }
