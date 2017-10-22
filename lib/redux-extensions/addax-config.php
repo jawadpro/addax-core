@@ -146,21 +146,6 @@
 		'icon'       => 'el el-home',
 		'fields'	 => array(
 
-      array(
-        'id'       => 'gmap-api',
-        'type'     => 'text',
-        'title'    => __('Google Map key', 'addax' ),
-        'default'  => '',
-        'subtitle'     => __('Get Google key from here <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Get Key</a>', 'addax'),
-        ),
-
-      array(
-        'id'       => 'mailchimp-api',
-        'type'     => 'text',
-        'title'    => __('Mailchimp Api', 'addax' ),
-        'default'  => '',
-        'subtitle'     => __('Enter you mailchimp api to make your subscription form working.', 'addax'),
-        ),
 
 		)
 	));
@@ -592,6 +577,44 @@
 
 		)
 	);
+
+  /* ================ GOOGLE MAP ============== */
+
+  Redux::setSection( $opt_name, array(
+        'title'      => __( 'Google Map', 'addax' ),
+        'id'         => 'google-map-options',
+		'icon'       => 'el el-home',
+		'fields'	 => array(
+
+      array(
+        'id'       => 'gmap-api',
+        'type'     => 'text',
+        'title'    => __('Google Map key', 'addax' ),
+        'default'  => '',
+        'subtitle'     => __('Get Google key from here <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Get Key</a>', 'addax'),
+        ),
+
+        array(
+          'id'       => 'homepage-footer-map',
+          'type'     => 'switch',
+          'title'    => __('Enable/Disable Homepage Map', 'addax' ),
+          'subtitle'     => __('If enable map will show on homepage', 'addax'),
+          'on' => __('Enable', 'addax'),
+          'off' => __('Disable', 'addax'),
+          'default'  => '0'
+        ),
+
+
+        array(
+        'id'       => 'addax-map-icon',
+        'type'     => 'media',
+        'url'      => true,
+        'mode'     => false,
+        'title'    => esc_html__('Map Icon', 'addax'),
+        ),
+
+		)
+	));
 
   /* ================ SOCIAL ICONS ============== */
 

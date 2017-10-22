@@ -4,7 +4,7 @@
   if ( ! function_exists( 'addax_accordion_html_callback' ) ) {
 
     function addax_accordion_html_callback( $atts , $content = NULL ) {
-      
+
     ob_start();
     ?>
 
@@ -48,7 +48,7 @@ if ( ! function_exists( 'accordion_panel_html_callback' ) ) {
       $panel_content = __( 'Please add accordion content here.' , 'addax' );
     }
 
-    $panel_id = strtolower( str_replace(" ","-", $panel_title ) );
+    $panel_id = esc_attr( uniqid( 'addax-tab-' ) );
   ob_start();
   ?>
 

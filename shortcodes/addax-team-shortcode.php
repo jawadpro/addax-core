@@ -64,7 +64,7 @@
             <div class="row">
 
               <?php if( !empty( $heading ) ) : ?>
-                <div class="col-md-3 no-padding">
+                <div class="col-sm-6 col-md-3 no-padding">
                     <div class="team-grid team-heading" <?php echo $heading_bg_color; ?>>
                         <div class="text">
                             <h1 class="addax-heading styler1 alignLeft" <?php echo $heading_txt_color; ?>><?php echo esc_html_e( $heading, 'addax' ); ?></h1>
@@ -82,7 +82,7 @@
               $member_image_url = wp_get_attachment_image_src( $member_image , 'addax-team-member-img' );
               ?>
 
-                <div class="col-md-3 no-padding">
+                <div class="col-sm-6 col-md-3 no-padding">
                     <div class="team-grid">
                         <div class="team-img">
                           <?php if( !empty( $member_image_url ) ) { ?>
@@ -111,7 +111,7 @@
               <?php endwhile; wp_reset_postdata(); ?>
 
                 <?php if( !empty( $btn_text ) )  { ?>
-                 <div class="col-md-3 no-padding">
+                 <div class="col-sm-6 col-md-3 no-padding">
                     <div class="team-grid join-team" <?php echo $btn_bg_color;  ?>>
                         <a href="<?php echo esc_html($btn_link);  ?>"><h3 <?php echo $btn_txt_color;  ?>><?php echo esc_html_e( $btn_text , 'addax' ); ?></h3></a>
                     </div>
