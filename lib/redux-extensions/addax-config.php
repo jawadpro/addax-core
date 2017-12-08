@@ -30,12 +30,12 @@
         // Name that appears at the top of your panel
         'display_version'      => $theme->get( 'Version' ),
         // Version that appears at the top of your panel
-        'menu_type'            => 'submenu',
+        'menu_type'            => 'menu',
         //Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)
         'allow_sub_menu'       => false,
         // Show the sections below the admin menu item or not
-        'menu_title'           => esc_html__( 'Theme Options', 'addax' ),
-        'page_title'           => esc_html__( 'Theme Options', 'addax' ),
+        'menu_title'           => esc_html__( 'Addax Options', 'addax' ),
+        'page_title'           => esc_html__( 'Addax Options', 'addax' ),
         // You will need to generate a Google API key to use this feature.
         // Please visit: https://developers.google.com/fonts/docs/developer_api#Auth
         'google_api_key'       => '',

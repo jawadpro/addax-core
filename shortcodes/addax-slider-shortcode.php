@@ -55,6 +55,7 @@
         $sub_heading_text_color = get_post_meta( $post->ID , 'sub_heading_text_color' , true );
         $slider_button_color_type = get_post_meta( $post->ID , 'slider_button_color_type' , true );
         $button_solid_color = get_post_meta( $post->ID , 'button_solid_color' , true );
+        $button_text_color = get_post_meta( $post->ID , 'button_text_color' , true );
         $to = get_post_meta( $post->ID , 'button_gradient_color_to' , true );
         $from = get_post_meta( $post->ID , 'button_gradient_color_from' , true );
 
@@ -67,6 +68,14 @@
         if( empty( $sub_heading_text_color ) ) { $sub_heading_text_color = '#fff'; }
         if( !empty( $main_heading_text_size ) ) { $main_heading_text_size = 'font-size:'.$main_heading_text_size.'px !important;'; }
         if( !empty( $sub_heading_text_size ) ) { $sub_heading_text_size = 'font-size:'.$main_heading_text_size.'px !important;'; }
+
+
+        //Button text color
+        $button_txt_color = '';
+        if( !empty( $button_text_color )  )
+        {
+            $button_txt_color = "color:" . $button_text_color . " !important;";
+        }
 
         //Button Background Color
         if( $slider_button_color_type == 'solid' )
@@ -103,11 +112,11 @@
 
                   <?php
                    if( !empty( $button_one_text )  ) {  ?>
-                   <a href="<?php echo esc_html( $button_one_link ); ?>" class="btn btn-primary btn-round" style="<?php echo $btn_bg; ?>"><?php echo esc_html_e( $button_one_text , 'addax' ); ?></a>
+                   <a href="<?php echo esc_html( $button_one_link ); ?>" class="btn btn-primary btn-round" style="<?php echo $btn_bg . $button_txt_color;  ?>"><?php echo esc_html_e( $button_one_text , 'addax' ); ?></a>
                   <?php } ?>
 
                   <?php if( !empty( $button_two_text )  ) {  ?>
-                   <a href="<?php echo esc_html( $button_one_link ); ?>" class="btn btn-primary btn-round" style="<?php echo $btn_bg; ?>"><?php echo esc_html_e( $button_two_text , 'addax' ); ?></a>
+                   <a href="<?php echo esc_html( $button_one_link ); ?>" class="btn btn-primary btn-round" style="<?php echo $btn_bg . $button_txt_color; ?>"><?php echo esc_html_e( $button_two_text , 'addax' ); ?></a>
                   <?php } ?>
 
                 </div>
@@ -118,7 +127,7 @@
       </div>
 
       <!-- hero section ends here -->
-      <?php if( $hide_nav == false ) : ?>
+
       <!--hero carousel controller-->
       <div class="addax-hero-controller">
         <button class="ah-left-btn">
@@ -131,8 +140,7 @@
         </button>
       </div>
       <!--hero carousel controller-->
-    <?php endif; ?>
-    <?php if( $hide_scroll_arrow == false ) : ?>
+
       <a href="#" class="scrollDown">
               <i class="fa fa-angle-down" aria-hidden="true"></i>
 
@@ -140,7 +148,6 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" fill="#0076ff" d="M111.042,0h-0.085C81.962,0.042,50.96,42.999,6,42.999c-6,0-6,0-6,0v1h214v-1v-0.015C169.917,42.349,139.492,0.042,111.042,0z"></path>
                 </svg>
       </a>
-    <?php endif; ?>
     </div>
 
     <?php
