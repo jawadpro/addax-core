@@ -1,0 +1,70 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "addax/counter",
+  "title": "Addax Counter",
+  "category": "addax",
+  "icon": "performance",
+  "description": "An animated number that counts up when it scrolls into view.",
+  "keywords": [
+    "number",
+    "stat",
+    "statistic",
+    "count"
+  ],
+  "textdomain": "addax-core",
+  "attributes": {
+    "number": {
+      "type": "number",
+      "default": 147
+    },
+    "prefix": {
+      "type": "string",
+      "default": ""
+    },
+    "suffix": {
+      "type": "string",
+      "default": "+"
+    },
+    "label": {
+      "type": "string",
+      "default": "Projects"
+    },
+    "duration": {
+      "type": "number",
+      "default": 2000
+    },
+    "separator": {
+      "type": "boolean",
+      "default": true
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "center"
+    }
+  },
+  "supports": {
+    "html": false,
+    "color": {
+      "text": true,
+      "background": true
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "typography": {
+      "fontSize": true
+    }
+  },
+  "example": {
+    "attributes": {
+      "number": 52147,
+      "label": "Hours"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}

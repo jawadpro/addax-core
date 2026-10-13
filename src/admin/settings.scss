@@ -1,0 +1,37 @@
+.addax-settings {
+	max-width: 760px;
+	margin-top: 20px;
+
+	&__header {
+		margin-bottom: 20px;
+
+		h1 {
+			margin-bottom: 4px;
+			font-size: 23px;
+		}
+
+		p {
+			margin: 0;
+			color: #50575e;
+		}
+	}
+
+	.components-card__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.components-notice {
+		margin: 0 0 16px;
+	}
+
+	&__panel {
+		padding-top: 20px;
+	}
+
+	&__intro {
+		margin: 0;
+		color: #50575e;
+	}
+}

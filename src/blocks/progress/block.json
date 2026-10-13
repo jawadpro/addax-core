@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "addax/progress",
+	"title": "Addax Progress",
+	"category": "addax",
+	"icon": "chart-pie",
+	"description": "A skill or progress indicator, shown as a bar or a donut chart.",
+	"keywords": [ "skill", "progress", "bar", "donut", "chart", "percentage" ],
+	"textdomain": "addax-core",
+	"attributes": {
+		"label": { "type": "string", "default": "Web design" },
+		"value": { "type": "number", "default": 80 },
+		"variant": { "type": "string", "enum": [ "line", "rounded", "donut" ], "default": "rounded" },
+		"barColor": { "type": "string", "default": "" },
+		"trackColor": { "type": "string", "default": "" },
+		"showValue": { "type": "boolean", "default": true },
+		"icon": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"html": false,
+		"color": { "text": true, "background": false },
+		"spacing": { "margin": true, "padding": true },
+		"typography": { "fontSize": true }
+	},
+	"styles": [],
+	"example": { "attributes": { "label": "CSS3", "value": 90 } },
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "addax/testimonials",
+	"title": "Addax Testimonials",
+	"category": "addax",
+	"icon": "format-quote",
+	"description": "A rotating set of client testimonials.",
+	"keywords": [ "reviews", "quotes", "carousel", "slider", "clients" ],
+	"textdomain": "addax-core",
+	"attributes": {
+		"autoplay": { "type": "boolean", "default": true },
+		"interval": { "type": "number", "default": 7000 },
+		"showArrows": { "type": "boolean", "default": true },
+		"showDots": { "type": "boolean", "default": true },
+		"title": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": { "text": true, "background": true, "gradients": true },
+		"spacing": { "padding": true, "margin": true },
+		"typography": { "fontSize": true },
+		"background": { "backgroundImage": true, "backgroundSize": true }
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

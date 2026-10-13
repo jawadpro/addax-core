@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "addax/clients",
+  "title": "Addax Client Logos",
+  "category": "addax",
+  "icon": "images-alt2",
+  "description": "A row of client or partner logos, static or as a continuously scrolling strip.",
+  "keywords": [
+    "logos",
+    "partners",
+    "brands",
+    "carousel",
+    "marquee"
+  ],
+  "textdomain": "addax-core",
+  "attributes": {
+    "logos": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object"
+      }
+    },
+    "marquee": {
+      "type": "boolean",
+      "default": true
+    },
+    "grayscale": {
+      "type": "boolean",
+      "default": true
+    },
+    "speed": {
+      "type": "number",
+      "default": 30
+    },
+    "logoHeight": {
+      "type": "number",
+      "default": 64
+    },
+    "gap": {
+      "type": "number",
+      "default": 64
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": false
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}

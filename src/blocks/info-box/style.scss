@@ -1,0 +1,145 @@
+.wp-block-addax-info-box {
+	--addax-accent: var(--wp--preset--color--accent, #914cc8);
+	position: relative;
+	height: 100%;
+	box-sizing: border-box;
+
+	.addax-info-box__media {
+		margin-bottom: 1rem;
+		line-height: 0;
+
+		&.is-icon {
+			display: inline-grid;
+			place-items: center;
+			width: 4.5rem;
+			height: 4.5rem;
+			border-radius: 50%;
+			color: var(--wp--preset--color--primary, #0076ff);
+			background: color-mix(in srgb, currentColor 10%, transparent);
+			transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+		}
+
+		&.is-image img {
+			max-width: 100%;
+			max-height: 180px;
+			width: auto;
+			height: auto;
+		}
+	}
+
+	.addax-info-box__title {
+		margin: 0 0 0.6rem;
+		font-size: 1.375em;
+
+		a {
+			color: inherit;
+		}
+	}
+
+	.addax-info-box__text {
+		margin: 0;
+	}
+
+	.addax-info-box__more {
+		display: inline-block;
+		margin-top: 1rem;
+		font-weight: 600;
+		font-size: 0.875em;
+	}
+
+	&:hover .addax-info-box__media.is-icon {
+		transform: translateY(-4px);
+		color: #fff;
+		background: var(--wp--preset--color--primary, #0076ff);
+	}
+
+	/* Classic: centred, a dot that grows into a line on hover. */
+	&.is-variant-classic {
+		text-align: center;
+		padding-bottom: 1.75rem;
+
+		&::after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background: var(--addax-accent);
+			transform: translateX(-50%);
+			transition: width 0.3s ease, border-radius 0.3s ease;
+		}
+
+		&:hover::after {
+			width: 100%;
+			border-radius: 0;
+		}
+	}
+
+	/* Modern: framed card whose border draws itself on hover. */
+	&.is-variant-modern {
+		padding: 3rem 2rem 2.5rem;
+		margin-top: 2rem;
+		border: 3px solid color-mix(in srgb, var(--addax-accent) 35%, transparent);
+		transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+		.addax-info-box__media {
+			position: absolute;
+			top: -2.25rem;
+			left: 1.5rem;
+			margin: 0;
+			outline: 8px solid var(--addax-card-bg, var(--wp--preset--color--base, #fff));
+		}
+
+		.addax-info-box__title {
+			font-family: var(--wp--preset--font-family--body, inherit);
+			font-size: 0.9375em;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		&:hover {
+			border-color: var(--addax-accent);
+			box-shadow: 0 18px 40px rgba(17, 24, 39, 0.12);
+		}
+	}
+
+	/* Inline: icon to the left of the text. */
+	&.is-variant-inline {
+		display: flex;
+		gap: 1.25rem;
+		align-items: flex-start;
+		text-align: start;
+
+		.addax-info-box__media {
+			flex-shrink: 0;
+			margin: 0;
+
+			&.is-icon {
+				width: 3.5rem;
+				height: 3.5rem;
+			}
+
+			&.is-image img {
+				max-height: 64px;
+			}
+		}
+	}
+
+	&.has-text-align-left {
+		text-align: left;
+	}
+
+	&.has-text-align-right {
+		text-align: right;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-addax-info-box,
+	.wp-block-addax-info-box * {
+		transition: none !important;
+	}
+}

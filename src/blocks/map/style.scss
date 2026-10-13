@@ -1,0 +1,20 @@
+.wp-block-addax-map {
+	overflow: hidden;
+	line-height: 0;
+
+	iframe {
+		display: block;
+		width: 100%;
+		height: var(--addax-map-h, 420px);
+		border: 0;
+	}
+
+	&.is-grayscale iframe {
+		filter: grayscale(1) contrast(1.05);
+		transition: filter 0.4s ease;
+	}
+
+	&.is-grayscale:hover iframe {
+		filter: none;
+	}
+}

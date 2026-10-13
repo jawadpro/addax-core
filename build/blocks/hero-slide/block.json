@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "addax/hero-slide",
+  "title": "Hero Slide",
+  "category": "addax",
+  "icon": "cover-image",
+  "description": "One slide of the Addax Hero Slider: a background image with an overlay and any content on top.",
+  "parent": [
+    "addax/hero-slider"
+  ],
+  "textdomain": "addax-core",
+  "usesContext": [
+    "addax/sliderMinHeight",
+    "addax/sliderMinHeightUnit"
+  ],
+  "attributes": {
+    "mediaId": {
+      "type": "number"
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "focalPoint": {
+      "type": "object",
+      "default": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "overlayColor": {
+      "type": "string",
+      "default": "#0a1430"
+    },
+    "overlayOpacity": {
+      "type": "number",
+      "default": 45
+    },
+    "contentPosition": {
+      "type": "string",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ],
+      "default": "center"
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false,
+    "color": {
+      "text": true,
+      "background": true,
+      "gradients": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}
