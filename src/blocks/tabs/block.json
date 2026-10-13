@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "addax/tabs",
+	"title": "Addax Tabs",
+	"category": "addax",
+	"icon": "index-card",
+	"description": "Tabbed content with bullet, pill or underline navigation. Each tab holds any blocks.",
+	"keywords": [ "tabs", "bullet tabs", "toggle", "panels" ],
+	"textdomain": "addax-core",
+	"attributes": {
+		"variant": { "type": "string", "enum": [ "bullets", "pills", "underline" ], "default": "bullets" },
+		"navAlign": { "type": "string", "enum": [ "left", "center", "right" ], "default": "center" },
+		"activeTab": { "type": "number", "default": 0 }
+	},
+	"providesContext": { "addax/activeTab": "activeTab" },
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": { "text": true, "background": true },
+		"spacing": { "padding": true, "margin": true }
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

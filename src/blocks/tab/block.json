@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "addax/tab",
+	"title": "Tab",
+	"category": "addax",
+	"icon": "index-card",
+	"description": "One panel of Addax Tabs.",
+	"parent": [ "addax/tabs" ],
+	"textdomain": "addax-core",
+	"usesContext": [ "addax/activeTab" ],
+	"attributes": {
+		"title": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,17 @@
+.wp-block-addax-hero-slider .addax-slider__slides.is-editing {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	min-height: 0;
+
+	.wp-block-addax-hero-slide {
+		min-height: min(var(--addax-hero-min-h, 100vh), 640px);
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+
+	> .block-list-appender {
+		position: relative;
+		margin: 12px auto;
+	}
+}

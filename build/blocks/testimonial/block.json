@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "addax/testimonial",
+  "title": "Testimonial",
+  "category": "addax",
+  "icon": "format-quote",
+  "description": "One testimonial: quote, client photo, name and role.",
+  "parent": [
+    "addax/testimonials"
+  ],
+  "textdomain": "addax-core",
+  "attributes": {
+    "quote": {
+      "type": "string",
+      "default": ""
+    },
+    "name": {
+      "type": "string",
+      "default": ""
+    },
+    "role": {
+      "type": "string",
+      "default": ""
+    },
+    "mediaId": {
+      "type": "number"
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}

@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "addax/info-box",
+	"title": "Addax Info Box",
+	"category": "addax",
+	"icon": "id-alt",
+	"description": "A service or feature box with an icon or image, a title and text. Three layouts: classic, modern and inline.",
+	"keywords": [ "service", "feature", "icon box", "infobox" ],
+	"textdomain": "addax-core",
+	"attributes": {
+		"variant": { "type": "string", "enum": [ "classic", "modern", "inline" ], "default": "classic" },
+		"mediaType": { "type": "string", "enum": [ "icon", "image", "none" ], "default": "icon" },
+		"icon": { "type": "string", "default": "desktop" },
+		"mediaId": { "type": "number" },
+		"mediaUrl": { "type": "string", "default": "" },
+		"mediaAlt": { "type": "string", "default": "" },
+		"title": { "type": "string", "default": "" },
+		"text": { "type": "string", "default": "" },
+		"level": { "type": "number", "default": 3 },
+		"url": { "type": "string", "default": "" },
+		"linkText": { "type": "string", "default": "" },
+		"accentColor": { "type": "string", "default": "" },
+		"textAlign": { "type": "string", "default": "" }
+	},
+	"supports": {
+		"html": false,
+		"color": { "text": true, "background": true, "link": true },
+		"spacing": { "padding": true, "margin": true },
+		"__experimentalBorder": { "color": true, "radius": true, "style": true, "width": true },
+		"shadow": true,
+		"typography": { "fontSize": true }
+	},
+	"example": { "attributes": { "title": "Web Development", "text": "Fast, accessible websites built to last." } },
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

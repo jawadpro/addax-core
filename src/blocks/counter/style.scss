@@ -1,0 +1,21 @@
+.wp-block-addax-counter {
+	padding-block: 1.25rem;
+
+	.addax-counter__value {
+		font-family: var(--wp--preset--font-family--heading, inherit);
+		font-size: clamp(2.5em, 5vw, 3.25em);
+		font-weight: 800;
+		line-height: 1.1;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.addax-counter__number {
+		display: inline-block;
+	}
+
+	.addax-counter__label {
+		margin-top: 0.5rem;
+		font-size: 1.125em;
+		opacity: 0.85;
+	}
+}

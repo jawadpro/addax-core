@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "addax/map",
+  "title": "Addax Map",
+  "category": "addax",
+  "icon": "location-alt",
+  "description": "A Google Map of an address. No API key needed. Leave the address empty to use the one in Addax Settings.",
+  "keywords": [
+    "map",
+    "google",
+    "location",
+    "address",
+    "contact"
+  ],
+  "textdomain": "addax-core",
+  "attributes": {
+    "address": {
+      "type": "string",
+      "default": ""
+    },
+    "zoom": {
+      "type": "number",
+      "default": 14
+    },
+    "height": {
+      "type": "number",
+      "default": 420
+    },
+    "grayscale": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "spacing": {
+      "margin": true
+    },
+    "__experimentalBorder": {
+      "radius": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

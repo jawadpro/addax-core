@@ -1,0 +1,71 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "addax/team-member",
+  "title": "Addax Team Member",
+  "category": "addax",
+  "icon": "admin-users",
+  "description": "A portrait tile with name and role that slide in on hover. Place several in a grid group.",
+  "keywords": [
+    "team",
+    "staff",
+    "person",
+    "member",
+    "people"
+  ],
+  "textdomain": "addax-core",
+  "attributes": {
+    "mediaId": {
+      "type": "number"
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "mediaAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "name": {
+      "type": "string",
+      "default": ""
+    },
+    "role": {
+      "type": "string",
+      "default": ""
+    },
+    "url": {
+      "type": "string",
+      "default": ""
+    },
+    "aspectRatio": {
+      "type": "string",
+      "default": "3/4"
+    },
+    "focalPoint": {
+      "type": "object",
+      "default": {
+        "x": 0.5,
+        "y": 0.3
+      }
+    }
+  },
+  "supports": {
+    "html": false,
+    "spacing": {
+      "margin": true
+    },
+    "__experimentalBorder": {
+      "radius": true
+    }
+  },
+  "example": {
+    "attributes": {
+      "name": "Benjamin H.",
+      "role": "CEO / Co-founder"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

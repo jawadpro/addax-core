@@ -1,0 +1,111 @@
+/* Shared slider mechanics: slides stack in one grid cell and cross-fade. */
+.addax-slider__slides {
+	display: grid;
+
+	> [data-addax-slide] {
+		grid-area: 1 / 1;
+	}
+}
+
+/* Without JavaScript only the first slide shows. */
+[data-addax-slider]:not(.is-ready) .addax-slider__slides > [data-addax-slide]:not(:first-child) {
+	display: none;
+}
+
+[data-addax-slider].is-ready .addax-slider__slides > [data-addax-slide] {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.9s ease, visibility 0s linear 0.9s;
+
+	&.is-active {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity 0.9s ease, visibility 0s;
+	}
+}
+
+[data-addax-slider]:not(.is-ready) .addax-slider__nav,
+[data-addax-slider].is-single .addax-slider__nav,
+[data-addax-slider].is-single .addax-slider__dots {
+	display: none;
+}
+
+.addax-slider__button {
+	display: inline-grid;
+	place-items: center;
+	width: 48px;
+	height: 48px;
+	padding: 0;
+	border: 2px solid currentColor;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.25);
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+
+	&:hover,
+	&:focus-visible {
+		background: var(--wp--preset--color--primary, #0076ff);
+		border-color: var(--wp--preset--color--primary, #0076ff);
+	}
+
+	&:focus-visible {
+		outline: 2px solid #fff;
+		outline-offset: 3px;
+	}
+
+	svg {
+		width: 22px;
+		height: 22px;
+	}
+}
+
+.addax-slider__toggle {
+	width: 36px;
+	height: 36px;
+
+	.addax-slider__icon-play {
+		display: none;
+	}
+
+	&.is-paused {
+		.addax-slider__icon-play {
+			display: block;
+		}
+
+		.addax-slider__icon-pause {
+			display: none;
+		}
+	}
+}
+
+.addax-slider__dots {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.addax-slider__dot {
+	width: 10px;
+	height: 10px;
+	padding: 0;
+	border: 2px solid currentColor;
+	border-radius: 50%;
+	background: transparent;
+	color: inherit;
+	opacity: 0.7;
+	cursor: pointer;
+	transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+
+	&[aria-current="true"] {
+		background: currentColor;
+		opacity: 1;
+		transform: scale(1.2);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-addax-slider].is-ready .addax-slider__slides > [data-addax-slide] {
+		transition: none;
+	}
+}
