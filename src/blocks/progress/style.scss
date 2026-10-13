@@ -6,7 +6,7 @@
 
 .wp-block-addax-progress {
 	--addax-bar: var(--wp--preset--color--primary, #0076ff);
-	--addax-track: rgba(127, 127, 127, 0.22);
+	--addax-track: var(--wp--preset--color--lilac, rgba(127, 127, 127, 0.22));
 	--addax-progress-now: var(--addax-progress);
 	margin-bottom: 1.5rem;
 	transition: --addax-progress-now 1.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -71,7 +71,7 @@
 			&::before {
 				content: "";
 				position: absolute;
-				inset: 10px;
+				inset: 12px;
 				border-radius: 50%;
 				background: var(--addax-donut-hole, var(--wp--preset--color--base, #fff));
 			}

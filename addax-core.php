@@ -29,6 +29,7 @@ require_once ADDAX_CORE_DIR . 'includes/post-meta.php';
 require_once ADDAX_CORE_DIR . 'includes/block-bindings.php';
 require_once ADDAX_CORE_DIR . 'includes/blocks.php';
 require_once ADDAX_CORE_DIR . 'includes/demo.php';
+require_once ADDAX_CORE_DIR . 'includes/patterns.php';
 
 /**
  * Load translations.

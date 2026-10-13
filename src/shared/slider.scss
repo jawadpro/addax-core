@@ -36,10 +36,10 @@
 	width: 48px;
 	height: 48px;
 	padding: 0;
-	border: 2px solid currentColor;
+	border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
 	border-radius: 50%;
-	background: rgba(0, 0, 0, 0.25);
-	color: #fff;
+	background: color-mix(in srgb, currentColor 8%, transparent);
+	color: inherit;
 	cursor: pointer;
 	transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 
@@ -47,10 +47,11 @@
 	&:focus-visible {
 		background: var(--wp--preset--color--primary, #0076ff);
 		border-color: var(--wp--preset--color--primary, #0076ff);
+		color: #fff;
 	}
 
 	&:focus-visible {
-		outline: 2px solid #fff;
+		outline: 2px solid currentColor;
 		outline-offset: 3px;
 	}
 

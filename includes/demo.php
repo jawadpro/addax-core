@@ -3,7 +3,7 @@
  * One-click demo projects (replaces the old Redux demo importer).
  *
  * POST /addax/v1/demo-projects creates sample Projects with categories and images
- * taken from the active Addax theme. Safe to run more than once: it skips titles that exist.
+ * bundled with the plugin. Safe to run more than once: it skips titles that exist.
  *
  * @package AddaxCore
  */
@@ -37,19 +37,19 @@ function addax_core_import_demo_projects() {
 	require_once ABSPATH . 'wp-admin/includes/image.php';
 
 	$projects = array(
-		array( 'Northwind rebrand', array( 'Branding' ), 'port1.jpg', 'Northwind', '2026', 'Strategy, identity, guidelines' ),
-		array( 'Fieldstone app', array( 'Apps', 'UI/UX' ), 'port2.jpg', 'Fieldstone', '2026', 'Product design, iOS, Android' ),
-		array( 'Bloom & Co. store', array( 'Web' ), 'port3.jpg', 'Bloom & Co.', '2025', 'E-commerce, WordPress' ),
-		array( 'Atlas annual report', array( 'Print', 'Branding' ), 'port4.jpg', 'Atlas Group', '2025', 'Editorial design' ),
-		array( 'Harbor travel guide', array( 'Web', 'UI/UX' ), 'port2.jpg', 'Harbor', '2025', 'Web design, content' ),
-		array( 'Lumen campaign', array( 'Branding', 'Print' ), 'port3.jpg', 'Lumen', '2024', 'Campaign, art direction' ),
-		array( 'Quarry dashboard', array( 'Apps' ), 'port1.jpg', 'Quarry Labs', '2024', 'Data visualisation, React' ),
-		array( 'Willow studio site', array( 'Web' ), 'port4.jpg', 'Willow Studio', '2024', 'Web design, development' ),
+		array( 'Northwind rebrand', array( 'Branding' ), 'work-1.jpg', 'Northwind', '2026', 'Strategy, identity, guidelines' ),
+		array( 'Fieldstone app', array( 'Apps', 'UI/UX' ), 'work-2.jpg', 'Fieldstone', '2026', 'Product design, iOS, Android' ),
+		array( 'Bloom & Co. store', array( 'Web' ), 'work-3.jpg', 'Bloom & Co.', '2025', 'E-commerce, WordPress' ),
+		array( 'Atlas annual report', array( 'Print', 'Branding' ), 'work-4.jpg', 'Atlas Group', '2025', 'Editorial design' ),
+		array( 'Harbor travel guide', array( 'Web', 'UI/UX' ), 'work-5.jpg', 'Harbor', '2025', 'Web design, content' ),
+		array( 'Lumen campaign', array( 'Branding', 'Print' ), 'work-6.jpg', 'Lumen', '2024', 'Campaign, art direction' ),
+		array( 'Quarry dashboard', array( 'Apps' ), 'work-7.jpg', 'Quarry Labs', '2024', 'Data visualisation, React' ),
+		array( 'Willow studio site', array( 'Web' ), 'work-8.jpg', 'Willow Studio', '2024', 'Web design, development' ),
 	);
 
 	$images  = array();
 	$created = 0;
-	$theme   = get_template_directory() . '/assets/images/';
+	$theme   = ADDAX_CORE_DIR . 'assets/images/';
 
 	foreach ( $projects as $index => $project ) {
 		list( $title, $cats, $image, $client, $year, $services ) = $project;

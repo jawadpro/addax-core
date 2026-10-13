@@ -8,10 +8,11 @@
 
 	.addax-testimonials__title {
 		margin: 0 0 1rem;
-		font-size: 1.125rem;
-		font-weight: 300;
-		letter-spacing: 0.3em;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
 		text-transform: uppercase;
+		color: var(--wp--preset--color--primary, inherit);
 		color: inherit;
 	}
 
@@ -62,8 +63,9 @@
 			margin: 0;
 			font-family: var(--wp--preset--font-family--heading, inherit);
 			font-size: clamp(1.125rem, 2.2vw, 1.375rem);
-			font-weight: 300;
-			line-height: 1.6;
+			font-weight: 500;
+			line-height: 1.5;
+			letter-spacing: -0.01em;
 			color: inherit;
 		}
 	}

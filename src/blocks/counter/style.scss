@@ -5,7 +5,8 @@
 		font-family: var(--wp--preset--font-family--heading, inherit);
 		font-size: clamp(2.5em, 5vw, 3.25em);
 		font-weight: 800;
-		line-height: 1.1;
+		line-height: 1.05;
+		letter-spacing: -0.04em;
 		font-variant-numeric: tabular-nums;
 	}
 
@@ -15,7 +16,7 @@
 
 	.addax-counter__label {
 		margin-top: 0.5rem;
-		font-size: 1.125em;
-		opacity: 0.85;
+		font-size: 1em;
+		opacity: 0.75;
 	}
 }

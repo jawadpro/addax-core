@@ -21,6 +21,10 @@ Heading, Button and Accordion are now block styles on the core blocks (in the th
 
 All blocks are dynamic (`render.php`), accessible (keyboard, ARIA, pause controls, `prefers-reduced-motion`) and use no jQuery.
 
+## Patterns
+
+Ten patterns in the *Addax blocks* category use these blocks: hero slider, animated counters, skills donuts, icon-box services, filterable projects, team hover cards, testimonials slider, process tabs, contact with map, and a client logo marquee. They live here, not in the theme, so the theme stays core-only for WordPress.org.
+
 ## Settings and meta
 
 - **Addax → Settings** — React screen over the REST API: contact details, social URLs, default header, sticky header, back-to-top, reveal animations, copyright, and a demo-projects importer.
